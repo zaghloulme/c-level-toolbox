@@ -46,7 +46,7 @@ Type `/update-profile` — update any preferences at any time
 
 ### Operations & Systems
 `/annual-planning` `/business-continuity-plan` `/change-management-plan` `/decision-matrix`
-`/delegation-framework` `/process-automation-audit` `/project-tracker`
+`/delegation-framework` `/project-tracker`
 `/quality-assurance-checklist` `/risk-assessment` `/vendor-evaluation`
 
 ### Legal & Compliance
@@ -62,7 +62,7 @@ Type `/update-profile` — update any preferences at any time
 `/annual-report-writer` `/churn-analysis`
 
 ### AI & Technology
-`/ai-content-policy` `/ai-ethics-policy` `/ai-use-case-finder` `/automation-workflow`
+`/ai-content-policy` `/ai-ethics-policy` `/ai-use-case-finder`
 
 ### Analytics & Data
 `/benchmarking-report` `/customer-lifetime-value` `/kpi-dashboard`

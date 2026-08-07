@@ -1,7 +1,7 @@
 {
   "name": "c-level-toolbox",
   "displayName": "C Level Toolbox",
-  "description": "Executive decision support: 68 skills for strategy, finance, operations, legal, HR, and growth — built for C-level leaders in mid-to-large organizations.",
+  "description": "Executive decision support: 69 skills for strategy, finance, operations, legal, HR, and growth — built for C-level leaders in mid-to-large organizations.",
   "version": "1.0.0",
   "author": "AxuraOps",
   "skills": [
@@ -35,7 +35,6 @@
     "change-management-plan",
     "decision-matrix",
     "delegation-framework",
-    "process-automation-audit",
     "project-tracker",
     "quality-assurance-checklist",
     "risk-assessment",
@@ -61,7 +60,6 @@
     "ai-content-policy",
     "ai-ethics-policy",
     "ai-use-case-finder",
-    "automation-workflow",
     "benchmarking-report",
     "customer-lifetime-value",
     "kpi-dashboard",
