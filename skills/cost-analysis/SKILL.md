@@ -127,7 +127,7 @@ Show how costs change at different volumes:
 
 **Price:** $45,000. **Direct costs:** $12,400/engagement (project lead time $8,000, third-party tools $1,200, implementation support $2,400, data migration $800). **Overhead/engagement:** $4,500 (based on $90,000/month overhead at 20 engagements/month). **Total cost:** $16,900. **Margin:** 62%.
 
-**Insight:** At 62% gross margin, the biggest lever is utilization — adding 5 more engagements/month cuts overhead per engagement from $4,500 to $3,750, improving margin to 65% with no cost cuts.
+**Insight:** At 62% gross margin, the biggest lever is utilization — adding 5 more engagements/month cuts overhead per engagement from $4,500 to $3,600 ($90,000 ÷ 25), improving margin to 64% with no cost cuts.
 
 ## Anti-Patterns
 

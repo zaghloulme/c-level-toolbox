@@ -4,6 +4,10 @@ description: "Drafts corporate partnership agreements covering capital contribut
 allowed-tools: Read Write Glob
 ---
 
+## Legal Disclaimer
+
+This skill generates partnership agreement templates for reference and drafting purposes. It does not constitute legal advice. Partnership agreements carry significant legal and financial obligations. Have any agreement reviewed by a qualified attorney in the governing jurisdiction before signing or enforcing.
+
 # Partnership Agreement
 
 ## Core Principle

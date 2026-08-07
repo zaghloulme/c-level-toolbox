@@ -14,14 +14,14 @@ Run plans in the order below. Plans 001–005 are independent of each other and 
 
 | # | Plan file | What it fixes | Skills affected | Priority | Effort | Risk | Status |
 |---|-----------|---------------|-----------------|----------|--------|------|--------|
-| 001 | [001-kpi-dashboard-remove-notion.md](001-kpi-dashboard-remove-notion.md) | Remove Notion hard dependency; output markdown table | `kpi-dashboard` | P1 | M | LOW | TODO |
-| 002 | [002-pitch-deck-remove-canva.md](002-pitch-deck-remove-canva.md) | Remove Canva hard dependency; output slide markdown | `pitch-deck` | P1 | M | LOW | TODO |
-| 003 | [003-product-roadmap-remove-notion.md](003-product-roadmap-remove-notion.md) | Remove Notion hard dependency; output markdown roadmap | `product-roadmap` | P1 | M | LOW | TODO |
-| 004 | [004-project-tracker-remove-notion.md](004-project-tracker-remove-notion.md) | Remove Notion hard dependency; output markdown task table | `project-tracker` | P1 | M | LOW | TODO |
-| 005 | [005-remove-notion-from-competitor-vendor.md](005-remove-notion-from-competitor-vendor.md) | Remove Notion soft dependency (primary save path) | `competitor-analysis` `vendor-evaluation` | P1 | S | LOW | TODO |
-| 006 | [006-finance-arithmetic-fixes.md](006-finance-arithmetic-fixes.md) | Fix arithmetic errors in worked examples and formulas | `roi-calculator` `financial-model` `cash-flow-forecast` `cost-analysis` `pricing-analysis` `financial-dashboard` `budget-planner` `financial-projection` | P2 | S | LOW | TODO |
-| 007 | [007-legal-disclaimers.md](007-legal-disclaimers.md) | Add legal disclaimers to legal document skills | `non-compete-agreement` `partnership-agreement` | P2 | S | LOW | TODO |
-| 008 | [008-risk-heatmap-and-credentials.md](008-risk-heatmap-and-credentials.md) | Fix risk heat map grid cells; remove credential-in-email anti-pattern | `risk-assessment` `automation-workflow` | P2 | S | LOW | TODO |
+| 001 | [001-kpi-dashboard-remove-notion.md](001-kpi-dashboard-remove-notion.md) | Remove Notion hard dependency; output markdown table | `kpi-dashboard` | P1 | M | LOW | DONE |
+| 002 | [002-pitch-deck-remove-canva.md](002-pitch-deck-remove-canva.md) | Remove Canva hard dependency; output slide markdown | `pitch-deck` | P1 | M | LOW | DONE |
+| 003 | [003-product-roadmap-remove-notion.md](003-product-roadmap-remove-notion.md) | Remove Notion hard dependency; output markdown roadmap | `product-roadmap` | P1 | M | LOW | DONE |
+| 004 | [004-project-tracker-remove-notion.md](004-project-tracker-remove-notion.md) | Remove Notion hard dependency; output markdown task table | `project-tracker` | P1 | M | LOW | DONE |
+| 005 | [005-remove-notion-from-competitor-vendor.md](005-remove-notion-from-competitor-vendor.md) | Remove Notion soft dependency (primary save path) | `competitor-analysis` `vendor-evaluation` | P1 | S | LOW | DONE |
+| 006 | [006-finance-arithmetic-fixes.md](006-finance-arithmetic-fixes.md) | Fix arithmetic errors in worked examples and formulas | `roi-calculator` `financial-model` `cash-flow-forecast` `cost-analysis` `pricing-analysis` `financial-dashboard` `budget-planner` `financial-projection` | P2 | S | LOW | DONE |
+| 007 | [007-legal-disclaimers.md](007-legal-disclaimers.md) | Add legal disclaimers to legal document skills | `non-compete-agreement` `partnership-agreement` | P2 | S | LOW | DONE |
+| 008 | [008-risk-heatmap-and-credentials.md](008-risk-heatmap-and-credentials.md) | Fix risk heat map grid cells; remove credential-in-email anti-pattern | `risk-assessment` `automation-workflow` | P2 | S | LOW | DONE |
 
 ---
 

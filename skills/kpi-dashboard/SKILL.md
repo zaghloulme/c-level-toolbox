@@ -1,6 +1,6 @@
 ---
-name: KPI Dashboard Builder (Notion)
-description: "Sets up KPI tracking dashboards in Notion with metrics, targets, status indicators, and trend tracking for centralized business performance visibility."
+name: KPI Dashboard Builder
+description: "Builds KPI tracking dashboards in markdown — metrics, targets, status indicators, and trend tracking for centralized business performance visibility."
 allowed-tools: Read Write Glob
 ---
 
@@ -60,33 +60,41 @@ Ask the user:
 | Engagement Rate | (Likes + Comments) / Followers | > 3% | Weekly |
 | Content Published | Posts/videos/episodes produced | 12/mo | Weekly |
 
-### Step 3: Build the Notion Dashboard
+### Step 3: Build the Dashboard
 
-Create a Notion database with these properties:
+Output the dashboard as a formatted markdown table. If the user has provided current values, populate them now. If not, use `—` as the placeholder.
 
-- **KPI Name** (Title)
-- **Current Value** (Number)
-- **Target** (Number)
-- **Status** (Select: On Track / At Risk / Off Track)
-- **Trend** (Select: Up / Flat / Down)
-- **Period** (Select: This Week / This Month / This Quarter)
-- **Category** (Select: Revenue / Growth / Efficiency / Retention)
-- **Last Updated** (Date)
-- **Notes** (Rich text — for context on changes)
+```
+## KPI Dashboard — [Business Name] — [Month Year]
 
-Add a **formula property** for % of Target: `(Current Value / Target) × 100`
+| KPI | Formula | Current | Target | % of Target | Status | Trend | Category | Updated |
+|-----|---------|---------|--------|-------------|--------|-------|----------|---------|
+| [KPI Name] | [Formula] | [Value] | [Target] | [X]% | [🟢 On Track / 🟡 At Risk / 🔴 Off Track] | [↑ Up / → Flat / ↓ Down] | [Revenue/Growth/Efficiency/Retention] | [Date] |
+```
 
-Set status rules:
-- **On Track:** ≥ 90% of target
-- **At Risk:** 70-89% of target
-- **Off Track:** < 70% of target
+Status rules:
+- **🟢 On Track:** ≥ 90% of target
+- **🟡 At Risk:** 70–89% of target
+- **🔴 Off Track:** < 70% of target
 
-### Step 4: Create Dashboard Views
+If the user has current data, calculate % of Target as `(Current / Target) × 100` and assign status automatically. If targets are directional (e.g., "< 5% churn"), note whether the metric is moving in the right direction instead of using the percentage formula.
 
-1. **Summary View** — Gallery view showing all KPIs with status color-coding
-2. **Weekly Review** — Table filtered to weekly KPIs, sorted by status
-3. **Trend View** — Board view grouped by trend (Up / Flat / Down)
-4. **Category View** — Board view grouped by category
+After outputting the dashboard, ask: "Do you want me to save this as a markdown file? If yes, provide a file path or I'll use `kpi-dashboard-[YYYY-MM].md`."
+
+If saving: use the Write tool to write the dashboard to the specified path.
+
+### Step 4: Provide Filtering Guidance
+
+After delivering the dashboard, provide these instructions for working with it:
+
+```
+**How to use this dashboard:**
+
+- **Weekly focus:** Look for 🔴 Off Track rows first, then 🟡 At Risk. These need attention.
+- **Trend check:** Any KPI with ↓ Down and 🟢 On Track is worth watching — it may cross into At Risk next period.
+- **Update frequency:** Replace "Current" values at the cadence in your review rhythm. Update the "Updated" date.
+- **If pasting into a spreadsheet:** The table pastes directly into Google Sheets or Excel. Add conditional formatting on the Status column to preserve the color coding.
+```
 
 ### Step 5: Set Up Review Rhythm
 
@@ -129,7 +137,7 @@ Provide a review checklist:
 
 - **User doesn't know what to track:** Start with revenue + one growth metric + one efficiency metric. Three KPIs beats zero KPIs.
 - **User wants to track 20+ metrics:** Push back. A dashboard with 20 metrics is a spreadsheet. Force-rank and pick the top 5-8.
-- **User doesn't use Notion:** Adapt the dashboard to Google Sheets or Airtable. The structure is the same — only the tool changes.
+- **User wants a spreadsheet instead of markdown:** The table in Step 3 pastes directly into Google Sheets or Excel. Provide the markdown output and note they can paste it in.
 - **Metrics aren't improving:** Dashboards show problems; they don't fix them. When a KPI is Off Track for 3+ periods, it needs an action plan.
 
 ## Constraints

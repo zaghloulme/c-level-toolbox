@@ -1,7 +1,7 @@
 ---
 name: Competitor Analysis
 description: "Conducts structured competitor analysis with comparison matrices, positioning maps, gap identification, threat assessment, and strategic recommendations — for executives mapping competitive landscapes, preparing go-to-market strategies, or making positioning decisions."
-allowed-tools: Read Write Glob mcp__claude_ai_Notion__notion-create-database mcp__claude_ai_Notion__notion-create-pages mcp__claude_ai_Notion__notion-search mcp__claude_ai_Notion__notion-fetch
+allowed-tools: Read Write Glob
 ---
 
 # Competitor Analysis
@@ -202,51 +202,13 @@ Deliver the analysis in a structured format. Present everything before saving an
 
 Save the analysis based on the user's preference.
 
-### Option A: Save to Notion Database
+### Save the Analysis
 
-1. **Search for existing context** — call `notion-search` to check if the user has a strategy, competitors, or market research page. If found, confirm placement.
-
-2. **Create the database** — call `notion-create-database` with these properties:
-
-   | Property | Type | Purpose |
-   |----------|------|---------|
-   | **Competitor** | Title | Company or product name |
-   | **Category** | Select | Price Leader, Quality Leader, Niche Specialist, Full-Service, Disruptor |
-   | **Threat Level** | Select | HIGH, MEDIUM, LOW |
-   | **Target Audience** | Rich text | Who they sell to |
-   | **Pricing** | Rich text | Plans, tiers, price range |
-   | **Key Strengths** | Rich text | Top 2-3 strengths |
-   | **Key Weaknesses** | Rich text | Top 2-3 weaknesses |
-   | **Unique Advantage** | Rich text | Their one differentiator |
-   | **Our Response** | Rich text | What the organization should do about this competitor |
-   | **Last Reviewed** | Date | Date of this analysis |
-   | **Notes** | Rich text | Additional context, links, observations |
-
-   Database title: `Competitor Analysis — [Industry/Category]`
-
-3. **Populate entries** — call `notion-create-pages` to add each competitor as a row with all fields filled from the analysis.
-
-4. **Add the user's own business as a row** — mark it clearly so it is distinguishable. This lets the user see themselves in context.
-
-5. **Confirm:**
-
-```
-Notion database created: "Competitor Analysis — [Category]"
-
-  [N] entries: [Competitor names + user's business]
-  Properties: Category, Threat Level, Audience, Pricing, Strengths, Weaknesses, Unique Advantage, Our Response, Last Reviewed
-  All entries dated to today
-
-  Suggested cadence: Review and update this database quarterly.
-```
-
-### Option B: Save as Markdown File
-
-If the user prefers a local file or does not have Notion connected:
-
-1. Write the full analysis to a markdown file at the user's preferred path
-2. Default filename: `competitor-analysis-[category].md`
+1. Write the full analysis to a markdown file using the Write tool
+2. Default filename: `competitor-analysis-[category].md` — ask for a preferred path if the user specifies one
 3. Include all sections: matrix, SWOTs, gaps, threats, recommendations
+
+Confirm the file path after saving.
 
 ### Suggest Review Cadence
 
@@ -292,11 +254,6 @@ Competitive landscapes shift. Review this analysis quarterly:
 3. Add a "Launch Positioning" recommendation: which positioning archetype and differentiation angle to lead with at launch
 4. Emphasize gaps and opportunities over threats — pre-launch, the organization can build specifically to fill identified gaps
 
-### Notion Save Fails
-
-1. Call `notion-search` to verify workspace access
-2. **Fallback:** Save the full analysis as a markdown file. All data can be transferred to Notion later.
-
 ### Analysis Feels Too Generic
 
 1. Ask for more context: "Can you share specific features, pricing pages, or customer feedback about these competitors?"
@@ -313,5 +270,5 @@ Competitive landscapes shift. Review this analysis quarterly:
 - **DO NOT** recommend "be better at everything" — each recommendation must target a specific gap with a specific action
 - **DO NOT** fabricate pricing, feature details, or market data — if information is unavailable, say so
 - **DO NOT** skip the user's own business in the comparison — they must see themselves in the matrix to understand their position
-- **DO NOT** save to Notion before the user reviews and approves the analysis — always present first, save second
+- **DO NOT** save to file before the user reviews and approves the analysis — always present first, save second
 - **DO NOT** compare on more than 10 dimensions — default to 8, go deeper only if the user asks

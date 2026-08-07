@@ -57,7 +57,7 @@ Choose 8-12 KPIs from the master list below. Default selections are marked.
 | Month-over-Month Growth | (This Month - Last Month) / Last Month x 100 | All businesses |
 | Cash Runway | Cash on Hand / Monthly Burn Rate | All businesses |
 | Customer Acquisition Cost (CAC) | Marketing Spend / New Customers | Product, SaaS |
-| Customer Lifetime Value (LTV) | Avg Revenue per Customer x Avg Retention (months) | SaaS, memberships |
+| Customer Lifetime Value (LTV) | Avg Revenue per Customer x Avg Retention (months) x Gross Margin % | SaaS, memberships |
 | Accounts Receivable Aging | Outstanding invoices by days overdue | Service businesses |
 
 ### Phase 3: Build the Dashboard Structure
@@ -129,7 +129,7 @@ Output the complete dashboard structure, a data collection template (what to tra
 ║  Project Revenue (8 active)      $380,000    30.6%     ║
 ║  Advisory/Board Fees              $80,000     6.5%     ║
 ║                                                         ║
-║  Revenue per Client: $73,529                           ║
+║  Revenue per Client: $72,941                           ║
 ║                                                         ║
 ║  EXPENSE BREAKDOWN                                      ║
 ║  Salaries & Benefits    $624,000    70.0%              ║

@@ -1,7 +1,7 @@
 ---
 name: Vendor Evaluation
 description: "Creates structured vendor and supplier comparison matrices with weighted scoring, total cost of ownership analysis, and recommendation summaries — for procurement decisions involving multiple candidates across software, services, or physical suppliers."
-allowed-tools: Read Write Glob mcp__claude_ai_Notion__notion-create-database mcp__claude_ai_Notion__notion-create-pages mcp__claude_ai_Notion__notion-search
+allowed-tools: Read Write Glob
 ---
 
 # Vendor Evaluation
@@ -226,52 +226,13 @@ there are other use cases where it would be appropriate.]
 
 Save the evaluation based on the user's preference.
 
-### Option A: Save to Notion Database
+### Save the Evaluation
 
-1. **Search for existing context** — call `notion-search` to check if the user has a vendor, tools, or operations page already. If found, confirm where to place the new database.
-
-2. **Create the database** — call `notion-create-database` with these properties:
-
-   | Property | Type | Purpose |
-   |----------|------|---------|
-   | **Vendor** | Title | Vendor or tool name |
-   | **Type** | Select | Software/SaaS, Agency, Contractor, Supplier |
-   | **Weighted Score** | Number | Total weighted score from the matrix |
-   | **Year 1 Cost** | Number | Total cost of ownership for year one |
-   | **Year 3 Cost** | Number | Total cost of ownership for three years |
-   | **Recommendation** | Select | Top Pick, Runner-Up, Not Recommended |
-   | **Key Strengths** | Rich text | Top 2-3 pros |
-   | **Key Weaknesses** | Rich text | Top 2-3 cons |
-   | **Lock-In Risk** | Select | LOW, MEDIUM, HIGH |
-   | **Must-Have Coverage** | Rich text | Which must-have requirements this vendor meets |
-   | **Notes** | Rich text | Additional context, trial details, decision rationale |
-   | **Last Evaluated** | Date | Date of this evaluation |
-
-   Database title: `Vendor Evaluation — [Category]`
-
-3. **Populate entries** — call `notion-create-pages` to add each vendor as a row with all fields filled from the evaluation.
-
-4. **Confirm:**
-
-```
-Notion database created: "Vendor Evaluation — [Category]"
-
-  [N] entries: [Vendor names]
-  Properties: Type, Weighted Score, Year 1 Cost, Year 3 Cost, Recommendation,
-  Strengths, Weaknesses, Lock-In Risk, Must-Have Coverage, Notes, Last Evaluated
-  All entries dated to today
-
-  This database serves as your decision record. Update it if pricing changes
-  or new vendors enter consideration.
-```
-
-### Option B: Save as Markdown File
-
-If the user prefers a local file or does not have Notion connected:
-
-1. Write the full evaluation to a markdown file at the user's preferred path
-2. Default filename: `vendor-evaluation-[category].md`
+1. Write the full evaluation to a markdown file using the Write tool
+2. Default filename: `vendor-evaluation-[category].md` — ask for a preferred path if the user specifies one
 3. Include all sections: scoring matrix, cost analysis, vendor profiles, recommendation, next steps
+
+Confirm the file path after saving.
 
 ### Decision Summary for Stakeholders
 
@@ -303,7 +264,7 @@ Regardless of save format, close with a structured pilot: test the top pick's co
 - **DO NOT skip the runner-up recommendation.** The top pick might fail during the pilot. The user needs a ready fallback.
 - **DO NOT present the recommendation before the scoring matrix and cost analysis.** Data before conclusion.
 - **DO NOT evaluate vendors the user did not ask about.** If a strong candidate is missing, mention it as a note after the evaluation.
-- **DO NOT save to Notion before the user reviews and approves the evaluation.** Present first, save second.
+- **DO NOT save to file before the user reviews and approves the evaluation.** Present first, save second.
 
 ---
 
@@ -336,11 +297,6 @@ If two vendors are within 5 points of each other on the weighted total:
 2. Break the tie with cost analysis: lower total cost of ownership wins the tiebreak
 3. If cost is also similar: break on the highest-weight criterion
 4. If still tied: recommend both for a head-to-head pilot
-
-### Notion Save Fails
-
-1. Call `notion-search` to verify workspace access
-2. **Fallback:** Save the full evaluation as a markdown file. All data can be transferred to Notion later.
 
 ### User Disagrees with the Recommendation
 

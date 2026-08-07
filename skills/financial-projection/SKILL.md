@@ -37,7 +37,7 @@ Build projections for conservative, base, and optimistic scenarios:
 ### Assumptions
 - Base monthly growth rate: [X]%
 - Conservative: [X-2]% monthly growth
-- Optimistic: [X+3]% monthly growth
+- Optimistic: [X+2]% monthly growth
 - Starting monthly revenue: $[X]
 
 ### Monthly Revenue by Scenario

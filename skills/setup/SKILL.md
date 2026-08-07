@@ -25,7 +25,7 @@ Work through these in conversational groups:
 - Do you prefer responses in English, or another language?
 
 **Group 3 — Tools and context**
-- What tools does your organization use? (e.g. Google Workspace, Microsoft 365, Notion, Slack, SAP, Salesforce — whatever is relevant)
+- What tools does your organization use? (e.g. Google Workspace, Microsoft 365, Slack, SAP, Salesforce — whatever is relevant)
 - What currency should I use for all financial work?
 
 **Group 4 — Goals (optional but valuable)**

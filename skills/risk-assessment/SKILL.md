@@ -84,10 +84,10 @@ Present a visual summary:
          Impact →
          1    2    3    4    5
     5  | M  | H  | C  | C  | C  |
-L   4  | M  | H  | H  | C  | C  |
-i   3  | L  | M  | H  | H  | C  |
-k   2  | L  | L  | M  | H  | H  |
-e   1  | L  | L  | L  | M  | M  |
+L   4  | L  | M  | H  | C  | C  |
+i   3  | L  | M  | M  | H  | C  |
+k   2  | L  | L  | M  | M  | H  |
+e   1  | L  | L  | L  | L  | M  |
 ```
 
 **GATE: Review scored risks before building mitigation plans.**

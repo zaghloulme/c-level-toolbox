@@ -51,7 +51,7 @@ Create a month-by-month table:
 
 - **Monthly Burn Rate:** Average total expenses per month
 - **Revenue Coverage Ratio:** Total revenue / total expenses (above 1.0 = cash positive)
-- **Cash Runway:** Starting cash / (monthly expenses - monthly revenue) = months until $0
+- **Cash Runway:** Starting cash / (monthly expenses - monthly revenue) = months until $0. If revenue ≥ expenses (cash-flow positive), output "N/A — cash-flow positive; runway is not the binding constraint" instead of calculating.
 - **Break-Even Month:** First month where cumulative cash flow turns positive
 - **Lowest Cash Point:** The month with the lowest ending cash balance
 
@@ -96,7 +96,7 @@ Based on the forecast, provide:
 | **Net Cash Flow** | **$31.5K** | **$31.5K** | **$31.5K** | **$31.5K** | **$31.5K** | **$31.5K** |
 | **Ending Cash** | **$451.5K** | **$483K** | **$514.5K** | **$546K** | **$577.5K** | **$609K** |
 
-**Conservative Scenario** (revenue drops 15% in month 3):
+**Conservative Scenario** (revenue at 80% of base, expenses at 110% of base from month 3):
 
 | | M1 | M2 | M3 | M4 | M5 | M6 |
 |---|-----|-----|-----|-----|-----|-----|

@@ -1,7 +1,7 @@
 ---
 name: Project Tracker
-description: "Creates a project management database in Notion with tasks, statuses, owners, due dates, and priorities — pre-populated from a project brief or scope document, for teams replacing spreadsheet-based task management."
-allowed-tools: Read Write Glob mcp__claude_ai_Notion__notion-create-database mcp__claude_ai_Notion__notion-create-pages mcp__claude_ai_Notion__notion-search mcp__claude_ai_Notion__notion-fetch
+description: "Creates a project management task list in markdown with tasks, statuses, owners, due dates, and priorities — pre-populated from a project brief or scope document, for teams replacing spreadsheet-based task management."
+allowed-tools: Read Write Glob
 ---
 
 # Project Tracker
@@ -81,200 +81,104 @@ EVERY PROJECT TRACKER STARTS BY GATHERING THE PROJECT DETAILS AND CREATING THE D
 Collect these details from the user before building anything:
 
 1. **Project name** -- what is this project called
-2. **Notion parent page** -- where should the tracker database live (page name or URL)
-3. **Project phases** -- custom phase names, or accept the 5 defaults (Planning, Design, Build, Review, Launch)
-4. **Team members** -- list of people who will own tasks (names only; these go in the Owner field)
-5. **Timeline** -- overall start date, end date, or phase-level deadlines
-6. **Project brief or task list** -- a scope document, brief, bullet list, or verbal description of what needs to get done
+2. **Project phases** -- custom phase names, or accept the 5 defaults (Planning, Design, Build, Review, Launch)
+3. **Team members** -- list of people who will own tasks (names only; these go in the Owner field)
+4. **Timeline** -- overall start date, end date, or phase-level deadlines
+5. **Project brief or task list** -- a scope document, brief, bullet list, or verbal description of what needs to get done
 
 If the user provides only items 1 and 2, proceed with all defaults and generate tasks from context. Ask only about missing critical details.
 
 **Brief template for vague requests:**
 
 ```
-I'll build your project tracker in Notion. Quick answers needed:
+I'll build your project tracker. Quick answers needed:
 
 1. What is the project name?
-2. Which Notion page should I create the tracker under?
-3. What are the project phases? (default: Planning, Design, Build, Review, Launch)
-4. Who are the team members? (names for task ownership)
-5. What is the timeline? (start date, end date, or key deadlines)
-6. Do you have a project brief, scope doc, or task list I should use to pre-populate tasks?
+2. What are the project phases? (default: Planning, Design, Build, Review, Launch)
+3. Who are the team members? (names for task ownership)
+4. What is the timeline? (start date, end date, or key deadlines)
+5. Do you have a project brief, scope doc, or task list I should use to pre-populate tasks?
 ```
 
-### Phase 2: Create the Database in Notion
+### Phase 2: Parse Tasks from Brief
 
-1. Call `notion-search` with the page name or keywords the user provided to locate the parent page
-2. Confirm the parent page with the user if multiple matches exist
-3. Call `notion-create-database` with the parent page ID and full schema:
+Parse the user's project brief, scope document, or task list into discrete tasks. For each task, map to the 9-property schema:
 
-**Database title:** `[Project Name] Tracker`
-
-**Properties to create:**
-
-```
-Task Name      -> title
-Status         -> select
-  options: Not Started, In Progress, In Review, Complete, Blocked
-  colors:  gray, blue, purple, green, red
-Priority       -> select
-  options: Urgent, High, Medium, Low
-  colors:  red, orange, yellow, gray
-Owner          -> rich_text
-Due Date       -> date
-Project Phase  -> select
-  options: [user's custom phases OR defaults: Planning, Design, Build, Review, Launch]
-  colors:  blue, purple, orange, green, pink
-Description    -> rich_text
-Dependencies   -> rich_text
-Tags           -> multi_select
-  options: milestone, client-facing, internal, content, design, development,
-           admin, research, meeting, deliverable
-  colors:  red, blue, gray, pink, purple, green, brown, yellow, orange, default
-```
-
-4. Verify the database was created by calling `notion-fetch` with the returned database ID
-
-5. Confirm creation to the user:
-
-```
-Project tracker created: "[Project Name] Tracker"
-Database ID: db_xyz789
-
-Properties configured:
-  - Task Name (title)
-  - Status (5 stages: Not Started > In Progress > In Review > Complete > Blocked)
-  - Priority (4 levels: Urgent, High, Medium, Low)
-  - Owner (text)
-  - Due Date (date)
-  - Project Phase ([number] phases)
-  - Description (rich text)
-  - Dependencies (rich text)
-  - Tags (10 default tags)
-```
-
-**IF THE PARENT PAGE IS NOT FOUND:**
-- Ask the user for the exact page title or a URL
-- Try `notion-search` again with the corrected term
-- If still not found, ask the user to share the page with the Notion integration
-- **After 3 failed searches, stop and explain:** "I cannot find that page. Please verify the page exists and that the Notion integration has access to it. Check Settings > Connections in Notion."
-
-**IF DATABASE CREATION FAILS:**
-- Check the error message for permission issues
-- Verify the parent page ID by calling `notion-fetch` on it
-- Retry once with the same parameters
-- **If it fails again:** "Database creation failed. This usually means the Notion integration does not have permission to create content on that page. Go to the parent page in Notion, click the three-dot menu, go to Connections, and ensure the integration has 'Can edit' access."
-
-### Phase 3: Pre-Populate Tasks from Project Brief
-
-1. Parse the user's project brief, scope document, or task list into discrete tasks
-2. For each task, map the data to the schema:
-   - **Task Name** -- short, action-oriented (start with a verb: "Design homepage wireframe", "Write onboarding email sequence")
-   - **Status** -- default to "Not Started" for all new tasks
-   - **Priority** -- infer from context; milestone items and deadline-sensitive tasks get "High" or "Urgent"; default to "Medium"
-   - **Owner** -- assign based on user instructions or skill/role matching; leave empty if no team info provided
-   - **Due Date** -- calculate from timeline if provided; distribute tasks across phases evenly if only start/end dates given
-   - **Project Phase** -- assign based on task nature and project flow
-   - **Description** -- extract relevant details, acceptance criteria, or specifications from the brief
-   - **Dependencies** -- note if a task explicitly depends on another task (e.g., "Design must complete before Build begins")
-   - **Tags** -- infer from task content (e.g., client deliverable = `client-facing` + `deliverable`, research task = `research`)
-
-3. Call `notion-create-pages` to add all tasks to the database
-
-4. Report seeding results:
-
-```
-Tasks imported: 20 of 20 successful
-
-  PLANNING (4 tasks):
-    Define project requirements          — Medium, Sarah, Due: Mar 10
-    Audit existing website analytics     — High, Marcus, Due: Mar 12
-    Stakeholder kickoff meeting          — Urgent, Sarah, Due: Mar 7
-    Compile brand asset inventory        — Low, Unassigned, Due: Mar 14
-
-  DESIGN (5 tasks): [listed with owner, priority, due date]
-  BUILD (7 tasks): [listed with owner, priority, due date]
-  REVIEW (2 tasks): [listed with owner, priority, due date]
-  LAUNCH (2 tasks): [listed with owner, priority, due date]
-
-Total: 20 tasks | Assigned: 16 | Unassigned: 4 | Milestones: 3
-```
+- **Task Name** — short, action-oriented (start with a verb: "Design homepage wireframe", "Write onboarding email sequence")
+- **Status** — default "Not Started" for all new tasks
+- **Priority** — infer from context; milestone and deadline-sensitive tasks get High or Urgent; default Medium
+- **Owner** — assign based on user instructions; leave empty if no team info provided
+- **Due Date** — calculate from timeline if provided; leave empty if not
+- **Project Phase** — assign based on task nature (Planning, Design, Build, Review, Launch — or user's custom phases)
+- **Description** — key details, acceptance criteria, or specs from the brief (keep brief — one line max)
+- **Dependencies** — note if a task explicitly depends on another (e.g., "depends on: Design homepage wireframe")
+- **Tags** — infer from content (client deliverable → `client-facing` + `deliverable`, research → `research`)
 
 **IF THE BRIEF IS VAGUE OR INCOMPLETE:**
-- Generate reasonable tasks based on the project type and phases
-- Present the generated task list to the user for approval BEFORE creating pages:
-  ```
-  I generated 18 tasks from your brief. Here is the breakdown by phase:
+Generate reasonable tasks based on the project type and phases. Present the generated task list to the user for approval BEFORE outputting:
+```
+I generated [N] tasks from your brief. Here is the breakdown by phase:
 
-  PLANNING (3 tasks):
-    1. Define target audience and goals — Medium
-    2. Audit competitor approach — Medium
-    3. Gather brand assets and copy — High
+PLANNING ([N] tasks):
+  1. [Task name] — [Priority]
+  2. [Task name] — [Priority]
 
-  Want me to proceed, or would you like to add, remove, or modify any tasks?
-  ```
-- **NEVER create tasks without confirmation when the data is inferred rather than explicit**
+Want me to proceed, or add, remove, or modify any tasks?
+```
+**NEVER output a task table without confirmation when data is inferred rather than explicit.**
 
-**IF BATCH CREATION PARTIALLY FAILS:**
-- Report which tasks succeeded and which failed
-- Retry each failed task individually with `notion-create-pages`
-- If individual retries fail, provide the task details formatted for manual entry
+### Phase 3: Output the Task Table
 
-### Phase 4: Set Up Views and Confirm
-
-After the database and tasks are in place, guide the user on setting up filtered views. **Notion MCP does not support creating views programmatically**, so provide exact instructions.
-
-Present these 5 views for the user to create manually:
+Output the full task list as a markdown table, grouped by Project Phase:
 
 ```
-RECOMMENDED VIEWS (create these in Notion):
+## [Project Name] Tracker
 
-1. ALL TASKS (Table view)
-   - View type: Table
-   - Sort: Due Date (ascending)
-   - No filter
-   - Purpose: Full task list ordered by deadline
+### [Phase Name]
 
-2. MY TASKS (Table view)
-   - View type: Table
-   - Filter: Owner contains [your name]
-   - Sort: Due Date (ascending), then Priority (Urgent first)
-   - Purpose: Personal task list for each team member
-
-3. THIS WEEK (Table view)
-   - View type: Table
-   - Filter: Due Date is within the next 7 days AND Status is not "Complete"
-   - Sort: Priority (Urgent first), then Due Date (ascending)
-   - Purpose: Weekly sprint view showing what needs attention now
-
-4. BY PHASE (Board view)
-   - View type: Board
-   - Group by: Project Phase
-   - Filter: Status is not "Complete"
-   - Sort: Priority (Urgent first)
-   - Purpose: See active tasks organized by project phase
-
-5. BLOCKED ITEMS (Table view)
-   - View type: Table
-   - Filter: Status is "Blocked"
-   - Sort: Priority (Urgent first)
-   - Purpose: Escalation list — resolve blockers before they cascade
+| # | Task | Status | Priority | Owner | Due Date | Tags | Dependencies |
+|---|------|--------|----------|-------|----------|------|--------------|
+| 1 | [Task name] | Not Started | High | [Owner] | [Date] | milestone | — |
 ```
 
-Deliver a final summary including: database name and ID, task count by phase with date ranges, assigned vs. unassigned count, milestone count, and 3-4 concrete next steps (create views, assign unassigned tasks, review weekly, check blocked items daily).
+(Repeat the table for each phase.)
+
+After the table, provide a summary line:
+```
+Total: [N] tasks | Assigned: [N] | Unassigned: [N] | Milestones: [N]
+```
+
+Then ask: "Do you want me to save this as a file? I'll use `tracker-[project-name].md` unless you specify a path."
+
+If saving: use the Write tool to write the full tracker to the specified path.
+
+### Phase 4: Deliver and Close
+
+After the task table and file save, provide this usage guide:
+
+```
+**How to use this tracker:**
+
+- **Sort by priority:** Look at Urgent rows first, then High. These define your week.
+- **Check blockers daily:** Any task with Status "Blocked" needs a resolution before it cascades.
+- **Weekly update:** Change Status values as work progresses. Update Due Dates when timelines shift.
+- **Add new tasks:** Add a row with Status=Not Started. Assign Phase, Priority, Owner, and Due Date before starting work.
+- **Paste into a spreadsheet:** The table pastes directly into Google Sheets or Excel. Use conditional formatting on the Status column for visual tracking.
+```
+
+Finish with 3-4 concrete next steps: assign any unassigned tasks, confirm due dates with team members, schedule a weekly check-in, identify and resolve any existing blockers.
 
 ---
 
 ## Example 1: Website Redesign Project
 
-**User request:** "We are redesigning our company website. 4 phases: Discovery, Design, Development, QA/Launch. Team is Sarah (PM), Marcus (designer), Priya (developer), and James (copywriter). Timeline is March 3 to April 25. My Notion page is called 'Active Projects'. Here is our scope..."
+**User request:** "We are redesigning our company website. 4 phases: Discovery, Design, Development, QA/Launch. Team is Sarah (PM), Marcus (designer), Priya (developer), and James (copywriter). Timeline is March 3 to April 25. Here is our scope..."
 
 **Execution:**
 
-1. **Gather:** Project name "Website Redesign", parent page "Active Projects", 4 custom phases, 4 team members, 8-week timeline, scope document provided
-2. **Search:** `notion-search` for "Active Projects" -> found `pg_active456`, confirmed
-3. **Create:** `notion-create-database` with parent `pg_active456`, title "Website Redesign Tracker", custom phases (Discovery, Design, Development, QA/Launch) -> `db_redesign789`
-4. **Seed 20 tasks:**
+1. **Gather:** Project name "Website Redesign", 4 custom phases, 4 team members, 8-week timeline, scope document provided
+2. **Parse:** 20 tasks extracted from scope doc and mapped to schema with phases, owners, priorities, and due dates.
+3. **Output:** Task table written by phase. Saved to `tracker-website-redesign.md`.
 
 ```
 DISCOVERY (5 tasks, Mar 3-10):
@@ -314,13 +218,13 @@ Total: 20 tasks | Assigned: 20 | Milestones: 4 | Client-facing: 2
 
 ## Example 2: Product Launch Project
 
-**User request:** "We are launching a new product in 6 weeks. Phases are Pre-Launch, Launch Week, and Post-Launch. The team is small. My Notion workspace has a page called 'Product Launches'."
+**User request:** "We are launching a new product in 6 weeks. Phases are Pre-Launch, Launch Week, and Post-Launch. The team is small."
 
 **Execution:**
 
-1. **Gather:** Project name "Product Launch", parent page "Product Launches", 3 custom phases, small team, 6-week timeline
-2. **Search:** `notion-search` for "Product Launches" -> found `pg_launches321`, confirmed
-3. **Create:** `notion-create-database` with parent `pg_launches321`, title "Product Launch Tracker", custom phases (Pre-Launch, Launch Week, Post-Launch) -> `db_launch654`
+1. **Gather:** Project name "Product Launch", 3 custom phases, small team, 6-week timeline
+2. **Parse:** Tasks generated from the project type and phases (brief was vague — present for confirmation first).
+3. **Output:** Task table written by phase after approval. Saved to `tracker-product-launch.md`.
 4. **Seed tasks with approval before creation** (brief was vague — present for confirmation first)
 5. **Deliver:** View instructions + final summary with phase breakdown and milestone checkpoints
 
@@ -328,107 +232,40 @@ Total: 20 tasks | Assigned: 20 | Milestones: 4 | Client-facing: 2
 
 ## Pre-Delivery Checklist
 
-Run this checklist before delivering the tracker to the user. **DO NOT SKIP ANY ITEM.**
-
-| Check | What to Verify | How |
-|-------|----------------|-----|
-| Database exists | Database was created and is accessible | Call `notion-fetch` with database ID |
-| All 9 properties present | Every property from the schema is configured | Verify in the `notion-fetch` response |
-| Status options correct | All 5 statuses exist as select options | Check select options in database schema |
-| Priority options correct | All 4 priorities exist as select options | Check select options in database schema |
-| Project phases correct | All custom or default phases exist as select options | Check select options in database schema |
-| Tags configured | All 10 default tags (or custom set) exist as multi-select options | Check multi-select options in database schema |
-| Due Date configured | Due Date is a date type property | Verify property type in schema |
-| Tasks seeded | All tasks were created successfully | Count created pages vs. expected |
-| No duplicate tasks | Same task was not added twice during seeding | Check for duplicate task names |
-| Owners assigned | Tasks have owners where team info was provided | Verify Owner field on seeded pages |
-| Due dates set | Tasks have due dates where timeline was provided | Verify Date values on seeded pages |
-| Milestones tagged | Key deliverables are tagged with "milestone" | Verify Tags on milestone tasks |
-| View instructions delivered | User received setup instructions for all 5 views | Confirm in delivery message |
-| Parent page correct | Database lives under the page the user requested | Verify parent in `notion-fetch` response |
+**DO NOT SKIP ANY ITEM.**
 
 ```
 Pre-Delivery Checklist:
-  [x] Database created and accessible
-  [x] All 9 properties configured
-  [x] Status options correct (5 stages)
-  [x] Priority options correct (4 levels)
-  [x] Project phases correct (custom or default)
-  [x] Tags configured (10 default or custom)
-  [x] Due Date property configured
-  [x] All tasks seeded successfully
-  [x] No duplicate tasks
-  [x] Owners assigned where applicable
-  [x] Due dates set from timeline
-  [x] Milestones tagged
-  [x] View setup instructions delivered
-  [x] Database under correct parent page
+  [ ] All tasks parsed from brief (or generated and approved)
+  [ ] Status set to Not Started for all new tasks
+  [ ] Priority assigned for every task
+  [ ] Project Phase assigned for every task
+  [ ] Owners assigned where team info was provided
+  [ ] Due dates set where timeline was provided
+  [ ] Milestones tagged
+  [ ] Dependencies noted where applicable
+  [ ] Task table output by phase
+  [ ] Summary line included (total, assigned, unassigned, milestones)
+  [ ] Usage guide delivered
+  [ ] File saved (if user requested)
+  [ ] No duplicate tasks
 ```
 
 ---
 
 ## Recovery and Troubleshooting
 
-### Notion Search Returns No Results
+### User Wants to Add More Columns Later
 
-If `notion-search` cannot find the target parent page:
-
-1. Ask the user for the exact page title (case-sensitive)
-2. Try searching with a shorter keyword (e.g., "Projects" instead of "Active Projects Dashboard")
-3. Ask the user to confirm the page exists and is not in a private section
-4. **If 3 searches fail:** "I cannot locate that page. Please verify the page title and ensure the Notion integration has access. Check Settings > Connections in Notion, find the integration, and confirm the page is shared with it."
-
-### Database Creation Fails
-
-If `notion-create-database` returns an error:
-
-1. Verify the parent page ID by calling `notion-fetch` on it
-2. Check for permission errors in the response -- the integration may lack write access
-3. Retry once with the same parameters
-4. **If it fails again:** "Database creation failed due to a permissions issue. Please go to the parent page in Notion, click the three-dot menu, go to Connections, and ensure the integration has 'Can edit' access."
-
-### Task Seeding Partially Fails
-
-If some tasks fail to create:
-
-1. Report which tasks succeeded and which failed
-2. Retry each failed task individually with `notion-create-pages`
-3. If individual retries fail, check if a required property is missing or malformed
-4. **If retries continue to fail:** Provide the task details formatted for manual entry:
-   ```
-   Could not import these tasks automatically:
-
-     Set up staging environment — High, Priya, Due: Mar 25
-
-   To add manually: open the tracker database in Notion, click "+ New",
-   and enter the details above.
-   ```
-
-### Notion API Rate Limits
-
-If you receive rate limit errors during bulk seeding:
-
-1. Pause for 10 seconds between batches
-2. Reduce batch size to 5 tasks per `notion-create-pages` call
-3. Continue until all tasks are imported
-4. **DO NOT skip tasks due to rate limits** -- slow down and retry
-
-### User Wants to Modify the Schema Later
-
-**Notion MCP does not support modifying existing database schemas.** Instruct the user:
-- To add a property: open the tracker, click "+" in the header row, choose type, name it
-- To modify a property: click the column header, select "Edit property", change type/name/options
+The markdown table can be extended by adding columns. To add a new column: add the header to the `|` row and a corresponding cell to every data row. If the file was saved, use the Write tool to overwrite it with the updated version.
 
 ### User Wants to Add More Tasks Later
 
-1. Call `notion-fetch` to confirm the database ID and schema
-2. Parse the new tasks following the same mapping rules in Phase 3
-3. Call `notion-create-pages` to add the new tasks
-4. Report the additions and updated totals
+Parse the new tasks using the same mapping rules in Phase 2. Add new rows to the existing table grouped by Phase. If the file was saved, use the Write tool to overwrite it with the updated rows appended.
 
 ### Duplicate Detection
 
-Flag potential duplicates before creating pages. Present them to the user for confirmation. **NEVER create duplicate task records** -- always confirm first.
+Flag potential duplicates before creating pages. Present them to the user for confirmation. **NEVER output duplicate task rows** -- always confirm first.
 
 ---
 
@@ -436,9 +273,7 @@ Flag potential duplicates before creating pages. Present them to the user for co
 
 - **DO NOT** create the database without the full property schema -- adding properties after pages exist causes data alignment issues
 - **DO NOT** invent task details not present in the brief -- if the brief is vague, present generated tasks for approval first
-- **DO NOT** skip the parent page confirmation -- creating a tracker under the wrong page is difficult to undo
 - **DO NOT** assign owners that the user did not mention -- leave the Owner field empty for unassigned tasks
 - **DO NOT** deliver without the view setup instructions -- the tracker is only valuable when the user can filter and sort tasks
 - **DO NOT** set all tasks to "Urgent" or "High" -- a project where everything is urgent has no prioritization at all
-- **DO NOT** create views programmatically -- Notion MCP does not support this; provide manual instructions instead
 - **DO NOT** promise automated reminders, notifications, or status updates -- this is a database, not a project management app with automations

@@ -150,8 +150,8 @@ Every model starts with a documented assumptions sheet.
 
 **Inputs:** $280K MRR, $1,200/mo ARPU, 6% monthly customer growth, 1.8% monthly churn, $3,200 CAC, $190K/mo fixed costs.
 
-**M12 projection:** $520K MRR, 435 active customers, $340K monthly expenses, $180K net cash flow/month.
-**M24 projection:** $940K MRR, 785 active customers, $620K monthly expenses (added 8 hires), $320K net monthly cash flow.
+**M12 projection:** $459K MRR, 382 active customers, $340K monthly expenses, $119K net cash flow/month.
+**M24 projection:** $752K MRR, 626 active customers, $620K monthly expenses (added 8 hires), $132K net monthly cash flow.
 
 **Sensitivity:** If churn increases to 3%, M24 ARR drops 28%. If growth rate drops to 4%, M24 ARR drops 34%. Growth rate is the most sensitive variable — worth defending over cost cuts.
 

@@ -79,7 +79,7 @@ Build the budget using these standard categories, adjusted for business type:
 
 | Category | Healthy Range |
 |----------|--------------|
-| Fixed costs | 15-30% of revenue |
+| Fixed costs | 15-30% of revenue (note: personnel-heavy service businesses — consulting, agencies, professional services — commonly run 40-60% when salaries are the primary cost; benchmark accordingly) |
 | Marketing | 5-15% of revenue |
 | Contractors and variable labor | 10-25% of revenue |
 | Profit reserve | 10-20% of revenue |

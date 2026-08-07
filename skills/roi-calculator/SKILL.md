@@ -130,9 +130,9 @@ ROI = (Total Benefits - Total Investment) / Total Investment x 100
 
 **Benefits:** Replaces 3 legacy systems ($8,200/month, $98,400/year). Eliminates manual reconciliation (6 staff each saving 5 hours/month at $65/hour = $23,400/year). Faster close cycle enables earlier cash collection estimated at $35,000/year in reduced DSO.
 
-**ROI:** ($156,800 - $234,000) / $234,000 = -33% at 12 months. Payback period: 22 months. 24-month ROI: +41%.
+**ROI:** ($156,800 - $234,000) / $234,000 = -33% at 12 months. Payback period: 22 months. 24-month ROI: +8.9%.
 
-**Recommendation:** Negative 12-month ROI but positive at 22 months. If the ERP is expected to run for 5+ years, the full-term ROI is 185%. Proceed, but negotiate payment terms to defer the implementation fee to month 3 to smooth cash impact.
+**Recommendation:** Negative 12-month ROI but positive at 22 months. If the ERP is expected to run for 5+ years, the full-term ROI is +74% (using the same formula: total benefits $784K minus total investment $450K over 5 years, divided by $450K). Proceed, but negotiate payment terms to defer the implementation fee to month 3 to smooth cash impact.
 
 ## Anti-Patterns
 

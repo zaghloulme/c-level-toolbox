@@ -1,7 +1,7 @@
 ---
-name: Pitch Deck Builder (Canva)
-description: "Creates professional investor or client pitch decks in Canva from a conversational brief about the business, product, or service for fundraising, client proposals, partnership pitches, or keynote presentations."
-allowed-tools: Read Write Glob mcp__claude_ai_Canva__generate-design-structured mcp__claude_ai_Canva__request-outline-review mcp__claude_ai_Canva__get-design mcp__claude_ai_Canva__get-design-content mcp__claude_ai_Canva__start-editing-transaction mcp__claude_ai_Canva__perform-editing-operations mcp__claude_ai_Canva__commit-editing-transaction mcp__claude_ai_Canva__cancel-editing-transaction mcp__claude_ai_Canva__export-design mcp__claude_ai_Canva__get-export-formats mcp__claude_ai_Canva__list-brand-kits mcp__claude_ai_Canva__get-design-thumbnail
+name: Pitch Deck Builder
+description: "Builds complete investor or client pitch decks as structured markdown — slide-by-slide content ready to paste into PowerPoint, Google Slides, or Keynote — for fundraising, client proposals, partnership pitches, or keynote presentations."
+allowed-tools: Read Write Glob
 ---
 
 # Pitch Deck
@@ -74,51 +74,58 @@ Construct a 10-12 slide outline using the standard pitch deck structure. Each sl
    - **Client deck:** Replace slides 5, 7, 10 with Case Study, Testimonials, Pricing
    - **Partnership deck:** Replace slides 7, 10, 11 with Audience Overlap, Proposed Terms, Mutual Benefits
 
-3. **Submit the outline for review** using the Canva outline review widget:
-   - Call `mcp__claude_ai_Canva__request-outline-review` with the slide titles and bullet points
-   - Present the interactive review widget to the user
-   - Wait for the user to approve or edit the outline through the widget
+3. **Present the outline for review** — show the slide titles and bullet points as a numbered list in chat and ask the user to approve or request edits.
 
-4. **Apply any changes** the user makes in the review widget before proceeding
+4. **Apply any changes** the user requests before proceeding
 
-**GATE: Do not proceed to Phase 3 until the outline is approved through the review widget.**
+**GATE: Do not proceed to Phase 3 until the user confirms the outline is correct.**
 
-## Phase 3: Generate the Presentation
+## Phase 3: Write the Slide Content
 
-Create the actual presentation in Canva using the approved outline.
+Write the full deck as structured slide content using the approved outline. Apply the rules from the Slide-by-Slide Content Guide for each slide.
 
-1. **Check for brand kit** — call `mcp__claude_ai_Canva__list-brand-kits`. If a kit exists, note the ID. If not, use Canva's default professional styling.
+Format each slide as:
 
-2. **Generate the deck** — call `mcp__claude_ai_Canva__generate-design-structured` with the approved outline, design type "presentation", brand kit ID (if available), and a clean professional style direction.
+```
+---
+**Slide [N]: [Title]**
 
-3. **Retrieve and preview** — call `mcp__claude_ai_Canva__get-design` to confirm creation, then `mcp__claude_ai_Canva__get-design-thumbnail` to share a preview link.
+[Body content — bullet points, one idea per line, max 30 words total]
 
-4. **Present the result** with the design link, thumbnail, slide count, and brand kit status. Ask if the user wants refinements or is ready to export.
+_Speaker note: [one sentence on what to say or emphasize verbally]_
+```
 
-**GATE: Wait for user feedback before entering Phase 4. If the user is satisfied, skip to Phase 5.**
+Write all slides in sequence without pausing. After the final slide, ask:
 
-## Phase 4: Refine the Presentation
+"Want me to save this as a file? I'll write it to `pitch-deck-[company-name].md` unless you specify a path."
 
-Use Canva's editing transactions to make targeted changes.
+If saving: use the Write tool to write the complete deck to the specified path.
 
-1. **Get current content** — call `mcp__claude_ai_Canva__get-design-content` to see text and elements on each slide
-2. **Start transaction** — call `mcp__claude_ai_Canva__start-editing-transaction` with the design ID
-3. **Apply edits** — call `mcp__claude_ai_Canva__perform-editing-operations` for text changes, repositioning, or content swaps
-4. **Commit or cancel** — call `commit-editing-transaction` if correct, or `cancel-editing-transaction` and start fresh if something broke
-5. **Show updated thumbnail** — call `get-design-thumbnail` so the user can verify
+**GATE: Present all slides before asking for refinements.**
 
-**IMPORTANT:** Make all related edits within a single transaction. Do not open multiple transactions for one round of feedback.
+## Phase 4: Refine the Deck
 
-Repeat Phase 4 for each round of user feedback. If 3 refinement rounds do not resolve the issue, stop and reassess — the problem may require manual editing in Canva's UI.
+After the user reviews the slides, apply feedback directly to the markdown.
 
-## Phase 5: Export the Deck
+1. Accept specific change requests ("slide 7 needs the actual MRR number", "the ask slide should list use of funds")
+2. Rewrite only the affected slides
+3. Show the revised slides inline — do not reprint the entire deck for one change
+4. If the user requests a full rewrite of a slide, replace it completely and mark it with `[revised]` in the title line for easy scanning
 
-Export the final presentation in both PPTX and PDF formats.
+If 3 rounds of revision do not resolve the issue, ask: "What outcome are you trying to achieve on this slide?" — diagnose intent before iterating further.
 
-1. **Check formats** — call `mcp__claude_ai_Canva__get-export-formats` to confirm PPTX and PDF availability
-2. **Export PPTX** — call `mcp__claude_ai_Canva__export-design` with format `pptx` (for PowerPoint, Google Slides, Keynote)
-3. **Export PDF** — call `mcp__claude_ai_Canva__export-design` with format `pdf` (for email attachments, investor portals, DocSend)
-4. **Deliver both download links** and remind the user the deck is saved in their Canva account for future editing
+## Phase 5: Deliver the Final Deck
+
+1. Write the final approved deck to a file using the Write tool: `pitch-deck-[company-name]-final.md`
+2. Confirm the file path to the user
+3. Provide paste instructions:
+
+```
+**To use this deck:**
+- **Google Slides / PowerPoint / Keynote:** Create one slide per section. Copy the body content for each slide. Delete speaker notes before presenting or keep them in the notes panel.
+- **Paste into a design tool:** The markdown structure maps directly to slide titles and bullets. One `---` separator = one new slide.
+- **Send as a document:** The file reads cleanly as a standalone briefing document before the deck is designed.
+```
 
 ## Slide-by-Slide Content Guide
 
@@ -154,7 +161,7 @@ Every slide follows the same rule: one idea, visual-first, minimal text.
 **The Ask:** $4M Series A — 45% product, 35% GTM, 15% team, 5% ops
 ```
 
-**Phase 2 outline submitted to review widget:**
+**Phase 2 outline presented for review:**
 1. WorkflowOS — Operations intelligence for scaling teams
 2. The Problem — Operations teams are drowning in coordination work
 3. The Solution — AI that turns data into decisions automatically
@@ -168,7 +175,7 @@ Every slide follows the same rule: one idea, visual-first, minimal text.
 11. The Ask — $4M to accelerate into mid-market
 12. Get in Touch — founders@workflowos.io
 
-**Phase 3-5:** Deck generated with brand kit. Exported as PPTX + PDF. 12 slides, ready for investor meetings.
+**Phase 3-5:** 12 slides written. Saved to `pitch-deck-workflowos.md`. Ready to paste into Google Slides or PowerPoint.
 
 ## Example 2: Consultant Client Pitch
 
@@ -198,7 +205,7 @@ Every slide follows the same rule: one idea, visual-first, minimal text.
 11. Next Steps — Sign by Friday, kick off Monday
 12. Contact — email, portfolio, LinkedIn
 
-**Phase 3-5:** Deck generated with professional default styling. Exported as PPTX + PDF. 12 slides, ready to send to the prospect.
+**Phase 3-5:** 12 slides written. Saved to `pitch-deck-brand-strategy.md`. Ready to paste into Google Slides or PowerPoint.
 
 ## Anti-Patterns
 
@@ -213,14 +220,8 @@ Every slide follows the same rule: one idea, visual-first, minimal text.
 
 ## Recovery
 
-**Design generation fails:** Retry once with the same parameters. If it fails again, simplify to 10 slides (drop Competition and Financials) and retry. If 3 attempts fail, stop and reassess — offer to write slide content as a markdown file for manual import.
+**Slide content is too generic:** Ask for one concrete detail per vague slide — a real stat, a named competitor, an actual price. Generic inputs produce generic slides.
 
-**Outline review widget does not load:** Present the outline as a numbered list in chat. Ask the user to approve or edit via text. Proceed with the text-confirmed outline.
-
-**Editing transaction fails to commit:** Call `cancel-editing-transaction` to clean up. Start a fresh transaction and re-apply. If 3 transactions fail on the same edit, skip it and note it for the user to fix in Canva.
-
-**Export fails:** Call `get-export-formats` to check available formats. If PPTX is unavailable, export PDF only. If both fail, provide the Canva design link for manual export.
-
-**No brand kit found:** Proceed with Canva's default professional styling. Inform the user they can apply their brand kit later in Canva's editor.
+**User wants to skip the outline review:** Do not skip it. The outline gate exists to prevent writing 12 slides against a misunderstood brief. Show the outline and ask for a single yes/no.
 
 **Brief is too vague:** Ask three questions: (1) Who is your target customer? (2) What do they pay you for? (3) What should the audience do after this deck? Do not proceed until Problem, Solution, and Ask are clear.

@@ -4,6 +4,10 @@ description: "Drafts enforceable non-compete and non-solicitation clauses for em
 allowed-tools: Read Write Glob
 ---
 
+## Legal Disclaimer
+
+This skill generates non-compete and non-solicitation templates for reference and drafting purposes. It does not constitute legal advice. Non-compete enforceability varies significantly by jurisdiction — some prohibit them entirely. Have any agreement reviewed by a qualified attorney in the governing jurisdiction before signing or enforcing.
+
 # Non-Compete Agreement
 
 ## Core Principle

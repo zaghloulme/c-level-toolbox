@@ -87,7 +87,7 @@ Reassess pricing every 6-12 months as value delivered, costs, and competitive la
 ## Example 1: B2B Platform ($1,200/year, considering increase)
 
 **Finding:** Competitors charge $1,800-$4,800/year for comparable platforms. Current price signals "entry-level tool" and attracts price-sensitive buyers who churn faster.
-**Recommendation:** Increase to $2,400/year for new customers, grandfather existing at $1,200 for 18 months. Expected: 12% volume decrease on new sales, 85% net revenue increase. Churn rate expected to improve as price-sensitive cohort is replaced.
+**Recommendation:** Increase to $2,400/year for new customers, grandfather existing at $1,200 for 18 months. Expected: 12% volume decrease on new sales, 76% net revenue increase (88 customers × $2,400 = $211,200 vs. 100 × $1,200 = $120,000 baseline). Churn rate expected to improve as price-sensitive cohort is replaced.
 
 ## Example 2: Professional Services Retainer ($15K/month, considering tiers)
 

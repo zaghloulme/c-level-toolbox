@@ -1,7 +1,7 @@
 ---
-name: Product Roadmap Builder (Notion)
-description: "Creates product roadmaps in Notion with milestones, feature priorities, release timelines, and status tracking for products with iterative development cycles."
-allowed-tools: Read Write Glob mcp__claude_ai_Notion__notion-create-database mcp__claude_ai_Notion__notion-create-pages mcp__claude_ai_Notion__notion-search mcp__claude_ai_Notion__notion-fetch
+name: Product Roadmap Builder
+description: "Creates product roadmaps in markdown with ICE-scored features, milestones, release timelines, and status tracking — output ready to paste into any project management tool."
+allowed-tools: Read Write Glob
 ---
 
 # Product Roadmap
@@ -83,26 +83,24 @@ EVERY PRODUCT ROADMAP STARTS BY GATHERING PRODUCT DETAILS AND CREATING THE DATAB
 1. **Product name** — what is the product called
 2. **Product type** — SaaS, mobile app, web app, online course, physical product, marketplace
 3. **Current stage** — idea, MVP, beta, launched, scaling
-4. **Notion parent page** — where should the roadmap live (page name or URL)
-5. **Feature list** — known features, ideas, or backlog items to import
-6. **Team size** — small (2-5), medium (6-15), or large (16+); affects Ease scoring
-7. **Release cadence** — weekly, biweekly, monthly, quarterly, or milestone-based
-8. **Stakeholder audience** — who will read this (team, investors, customers, board)
-9. **Custom categories** — product areas beyond the 6 defaults
+4. **Feature list** — known features, ideas, or backlog items to import
+5. **Team size** — small (2-5), medium (6-15), or large (16+); affects Ease scoring
+6. **Release cadence** — weekly, biweekly, monthly, quarterly, or milestone-based
+7. **Stakeholder audience** — who will read this (team, investors, customers, board)
+8. **Custom categories** — product areas beyond the 6 defaults
 
 If the user provides only items 1, 4, and 5, proceed with all defaults.
 
 **Brief template:**
 ```
-I'll build your product roadmap in Notion. Quick answers needed:
+I'll build your product roadmap in markdown. Quick answers needed:
 1. Product name?
 2. Product type? (SaaS, app, course, physical, other)
 3. Current stage? (idea, MVP, beta, launched, scaling)
-4. Which Notion page should I create the roadmap under?
-5. Feature list or backlog to import?
-6. Team size? (2-5, 6-15, 16+)
-7. Release cadence? (weekly, biweekly, monthly, quarterly)
-8. Who will read this roadmap? (team, investors, customers, board)
+4. Feature list or backlog to import?
+5. Team size? (2-5, 6-15, 16+)
+6. Release cadence? (weekly, biweekly, monthly, quarterly)
+7. Who will read this roadmap? (team, investors, customers, board)
 ```
 
 ### Phase 2: Prioritize Features with ICE Scoring
@@ -125,64 +123,72 @@ Approve this prioritization, or tell me which scores to adjust.
 
 **NEVER skip prioritization.** Even if the user says "just add them all," score every feature first.
 
-### Phase 3: Search Notion for Parent Page
+### Phase 3: Output the Roadmap
 
-1. Call `notion-search` with the page name the user provided
-2. Confirm the parent page if multiple matches exist
-
-**IF NOT FOUND:** Ask for exact title, try shorter keywords, verify integration access. After 3 failures: "I cannot locate that page. Check Settings > Connections in Notion and verify the integration has access."
-
-### Phase 4: Create the Roadmap Database
-
-1. Call `notion-create-database` with parent page ID, title `[Product Name] Roadmap`, and all 12 properties from the schema above (including color assignments)
-2. Verify with `notion-fetch` on the returned database ID
-3. Confirm creation with property summary
-
-**IF CREATION FAILS:** Verify parent page ID with `notion-fetch`, check permissions, retry once. If it fails again: "Please go to the parent page > three-dot menu > Connections and ensure the integration has 'Can edit' access."
-
-### Phase 5: Seed Features and Deliver
-
-1. Using the approved scored list from Phase 2, call `notion-create-pages` for all features
-2. Populate all 12 properties per feature. Must Have/Now features start as "Planned"; all others start as "Backlog"
-3. Report results grouped by Quarter/Phase with feature name, priority, effort, ICE score, and owner
-4. Provide view setup instructions (Notion MCP cannot create views programmatically):
+Using the approved prioritized list from Phase 2, output the full roadmap as a markdown table:
 
 ```
-RECOMMENDED VIEWS:
+## [Product Name] Roadmap
 
-1. TIMELINE VIEW (Table) — Group by: Quarter/Phase, Sort: Priority then ICE descending, Filter: not Deferred
-2. PRIORITY BOARD (Board) — Group by: Priority, Sort: Impact descending, Filter: not Shipped/Deferred
-3. STATUS KANBAN (Board) — Group by: Status, Sort: Priority, No filter
-4. QUICK WINS (Table) — Filter: Impact >= 7 AND Ease >= 7 AND Status = Backlog, Sort: Ease descending
+| # | Feature | Priority | Phase | Status | Effort | Impact | Conf | Ease | ICE | Owner | Category | Dependencies |
+|---|---------|----------|-------|--------|--------|--------|------|------|-----|-------|----------|--------------|
+| 1 | [Feature] | Must Have | Now | Backlog | Small | 9 | 8 | 6 | 43.2 | [Owner] | Core | — |
 ```
 
-5. Deliver the planning guide:
+After outputting the table, ask: "Do you want me to save this as a file? I'll use `roadmap-[product-name].md` unless you specify a path."
+
+If saving: use the Write tool to write the roadmap to the specified path.
+
+### Phase 4: Deliver the Planning Guide
+
+After the roadmap table, deliver this guide:
 
 ```
-QUARTERLY REVIEW (60 min):
-1. Move shipped features to "Shipped"
+## Roadmap Operating Guide
+
+**QUARTERLY REVIEW (60 min):**
+1. Mark shipped features as Shipped
 2. Re-score features whose Impact/Confidence changed
-3. Pull top Backlog features into "Planned" for next quarter
-4. Assign owners to all "Now" features
+3. Pull top Backlog features into Planned for next quarter
+4. Assign owners to all Now features
 
-WEEKLY CHECK-IN (15 min):
-1. Update statuses in Status Kanban
-2. Check for blocked features (note in Dependencies)
-3. Review Quick Wins for fast shipping opportunities
+**WEEKLY CHECK-IN (15 min):**
+1. Update statuses for In Progress features
+2. Check for blocked features — note blockers in Dependencies column
+3. Review features with Impact ≥ 7 and Ease ≥ 7 in Backlog for fast shipping
 
-ADDING NEW IDEAS: Set Status=Backlog, Phase=Icebox, score ICE, assign Priority
+**ADDING NEW IDEAS:** Add a row with Status=Backlog, Phase=Icebox, score ICE, assign Priority
 
-STAKEHOLDER VIEWS:
-- Board/Investors: filter Must Have + Should Have, hide ICE scores
-- Customers: filter Now + Next, show Status and Quarter only
-- Internal: show all views, full detail
+**STAKEHOLDER VIEWS:**
+- Board/Investors: share rows filtered to Must Have + Should Have, hide ICE columns
+- Customers: share Now + Next rows, show Feature, Status, and Phase only
+- Internal: full table, all columns
 ```
 
-**IF THE FEATURE LIST IS VAGUE:** Generate reasonable features based on product type and stage, present with ICE scores for approval BEFORE creating pages. NEVER create inferred features without confirmation.
+### Phase 5: Confirm and Close
+
+Report the final roadmap summary:
+
+```
+Roadmap complete: [Product Name]
+
+  NOW ([N] features): [list feature names with priority and ICE score]
+  NEXT ([N] features): [list feature names]
+  LATER ([N] features): [list feature names]
+  ICEBOX ([N] features): [list feature names]
+
+Total: [N] features | Assigned: [N] | Unassigned: [N] | Must Have: [N]
+
+File saved to: [path] (or "Not saved — copy the table above to use it")
+```
+
+Provide 3-4 next steps: assign any unassigned owners, write specs for Must Have features, schedule the first quarterly review, and share the stakeholder-filtered view.
+
+**IF THE FEATURE LIST IS VAGUE:** Generate reasonable features based on product type and stage, present with ICE scores for approval BEFORE writing the table. NEVER output inferred features without user confirmation.
 
 ## Example 1: SaaS Invoicing Tool Roadmap
 
-**User:** "Building a SaaS invoicing tool called BillFlow. Post-MVP with 50 beta users. Team: me (product), Priya (engineer), Marcus (designer). Monthly releases. Notion page: 'BillFlow Product'. Here are 12 features..."
+**User:** "Building a SaaS invoicing tool called BillFlow. Post-MVP with 50 beta users. Team: me (product), Priya (engineer), Marcus (designer). Monthly releases. Here are 12 features..."
 
 **Execution:**
 
@@ -205,31 +211,12 @@ STAKEHOLDER VIEWS:
 12  Multi-currency support           6      4     3    7.2   Won't Have    Icebox
 ```
 
-3. **Search:** `notion-search` "BillFlow Product" -> `pg_billflow123`
-4. **Create:** Database "BillFlow Roadmap" with custom categories (Core, Billing, Reporting, Integrations, UX) -> `db_roadmap456`
-5. **Seed and deliver:**
-
-```
-Features imported: 12 of 12
-
-  NOW: Payment reminder emails (Must, ICE 44.8), Stripe integration (Must, ICE 43.2),
-       Recurring invoices (Should, ICE 31.5), CSV export (Should, ICE 29.4),
-       Dashboard metrics (Should, ICE 25.2)
-  NEXT: Late fees (Could, ICE 21.0), Team roles (Could, ICE 21.0),
-        Invoice templates (Could, ICE 18.0), QuickBooks sync (Could, ICE 16.0)
-  LATER: Dark mode (Could, ICE 14.4), Client portal (Could, ICE 14.0)
-  ICEBOX: Multi-currency (Won't, ICE 7.2)
-
-Next steps:
-1. Create the 4 recommended views in Notion
-2. Assign owners to the 3 unassigned features
-3. Write detailed specs for the 2 Must Have features
-4. Schedule quarterly review for end of this quarter
-```
+3. **Output:** Roadmap table written with 12 features, ICE scores, priorities, and phases. Saved to `roadmap-billflow.md`.
+4. **Deliver:** Planning guide + next steps provided.
 
 ## Example 2: Enterprise Internal Tool Roadmap
 
-**User:** "Building an internal analytics dashboard for our operations team, post-MVP with 30 internal users. Team of 6. Quarterly releases. Notion page: 'Ops Analytics'. Here are 8 features..."
+**User:** "Building an internal analytics dashboard for our operations team, post-MVP with 30 internal users. Team of 6. Quarterly releases. Here are 8 features..."
 
 **Prioritize:** Score 8 features (team of 6 = mid-range Ease scores):
 
@@ -251,50 +238,30 @@ Next steps:
 
 ```
 Pre-Delivery Checklist:
-  [ ] Database created and accessible (notion-fetch with database ID)
-  [ ] All 12 properties configured
-  [ ] Priority options correct (4 MoSCoW levels)
-  [ ] Status options correct (6 stages)
-  [ ] Quarter/Phase options correct (4 horizons)
-  [ ] Effort options correct (5 sizes)
-  [ ] Category options present (default or custom)
-  [ ] ICE scores populated for all features
-  [ ] All features seeded successfully (count vs. expected)
-  [ ] No duplicate features
-  [ ] Owners assigned where team info was provided
-  [ ] Dependencies documented where applicable
-  [ ] View setup instructions delivered
-  [ ] Database under correct parent page
-  [ ] User approved prioritization before seeding
+  [ ] All features scored with ICE
+  [ ] Priority assigned (Must Have / Should Have / Could Have / Won't Have)
+  [ ] Phase assigned (Now / Next / Later / Icebox)
+  [ ] Effort assigned for all features
+  [ ] Owner assigned where team info was provided
+  [ ] Dependencies noted where applicable
+  [ ] User approved prioritization before outputting table
+  [ ] Roadmap table output successfully
+  [ ] Planning guide delivered
+  [ ] File saved (if user requested)
 ```
 
 ## Recovery and Troubleshooting
 
-### Notion Search Returns No Results
-1. Ask for the exact page title (case-sensitive)
-2. Try a shorter keyword (e.g., "Product" instead of "BillFlow Product Dashboard")
-3. Confirm the page is shared with the Notion integration
-4. After 3 failures: "Check Settings > Connections in Notion and verify the integration has access."
-
-### Database Creation Fails
-1. Verify parent page ID with `notion-fetch`
-2. Check for permission errors
-3. Retry once
-4. If it fails again: "Go to parent page > three-dot menu > Connections > ensure 'Can edit' access."
-
-### Feature Seeding Partially Fails
-1. Report which features succeeded and which failed
-2. Retry failed features individually
-3. If retries fail, provide details formatted for manual entry
-
-### Notion API Rate Limits
-1. Pause 10 seconds between batches, reduce to 5 features per call
-2. **DO NOT skip features due to rate limits** — slow down and retry
-
 ### User Disagrees with ICE Scores
 1. Ask which features to re-score and discuss their reasoning
 2. Adjust scores, recalculate ICE, re-sort priorities
-3. Present revised list for approval before proceeding
+3. Present revised list for approval before outputting the table
+
+### Feature List Is Vague
+Generate reasonable features based on product type and stage. Present for approval before outputting. Never output inferred features without confirmation.
+
+### Too Many Features (more than 30)
+Group into categories first. Present category-level priorities, then expand the highest-priority categories into individual features. A roadmap with 40 ungrouped features is a backlog, not a roadmap.
 
 ## Anti-Patterns
 
@@ -304,6 +271,4 @@ Pre-Delivery Checklist:
 - **DO NOT** add more than 20 features without grouping into categories — uncategorized lists are backlog dumps, not roadmaps
 - **DO NOT** assign all features to "Now" — if everything is Now, nothing is prioritized
 - **DO NOT** give every feature the same ICE scores — identical scores defeat the framework
-- **DO NOT** skip parent page confirmation — creating under the wrong page is difficult to undo
-- **DO NOT** create views programmatically — Notion MCP does not support this
 - **DO NOT** promise automated notifications, sprint planning, or burndown charts — this is a database, not a full PM tool
