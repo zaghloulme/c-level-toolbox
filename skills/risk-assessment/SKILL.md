@@ -1,7 +1,7 @@
 ---
 name: Risk Assessment
+version: 1.7.5
 description: "Conducts business risk assessments with likelihood and impact scoring, mitigation strategies, early warning indicators, and monitoring plans — for leadership teams managing operational, financial, market, and compliance exposure."
-allowed-tools: Read Write Glob
 ---
 
 # Risk Assessment

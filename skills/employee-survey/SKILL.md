@@ -1,7 +1,7 @@
 ---
 name: Employee Engagement Survey
+version: 1.2.2
 description: "Creates employee engagement surveys with anonymous feedback mechanisms, question categories, rating scales, and action planning frameworks — for quarterly pulse checks or annual culture assessments."
-allowed-tools: Read Write Glob
 ---
 
 # Employee Survey

@@ -1,7 +1,7 @@
 ---
 name: Revenue Forecast
+version: 1.4.5
 description: "Projects revenue with conservative, base, and optimistic scenarios using historical data, growth drivers, and planned changes — by stream, channel, or segment — for budgeting, planning, or board reporting."
-allowed-tools: Read Write Glob
 ---
 
 # Revenue Forecast

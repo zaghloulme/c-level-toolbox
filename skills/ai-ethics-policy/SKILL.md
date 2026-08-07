@@ -1,7 +1,7 @@
 ---
 name: AI Ethics and Usage Policy
+version: 1.7.5
 description: "Creates AI usage policies with transparency commitments, approved and prohibited uses, human oversight requirements, and disclosure standards for responsible AI deployment across teams and organizations."
-allowed-tools: Read Write Glob
 ---
 
 # AI Ethics Policy

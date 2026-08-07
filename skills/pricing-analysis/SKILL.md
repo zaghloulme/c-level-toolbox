@@ -1,7 +1,7 @@
 ---
 name: Pricing Analysis and Optimization
+version: 1.1.0
 description: "Analyzes pricing effectiveness through competitor benchmarking, value metric alignment, and price sensitivity assessment — then models revenue impact of proposed changes before implementation."
-allowed-tools: Read Write Glob
 ---
 
 # Pricing Analysis

@@ -1,7 +1,7 @@
 ---
 name: LinkedIn Personal Brand Strategy
+version: 2.1.2
 description: "Builds a LinkedIn personal brand strategy with posting schedule, content themes, engagement tactics, and connection outreach for generating inbound opportunities."
-allowed-tools: Read Write Glob
 ---
 
 # LinkedIn Strategy

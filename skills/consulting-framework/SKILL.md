@@ -1,7 +1,7 @@
 ---
 name: Consulting Engagement Framework
+version: 1.5.5
 description: "Builds consulting engagement frameworks with diagnostic questions, analysis templates, and recommendation structures that turn expertise into a repeatable, scalable methodology."
-allowed-tools: Read Write Glob
 ---
 
 # Consulting Framework

@@ -1,7 +1,7 @@
 ---
 name: AI Content Policy and Disclosure Standards
+version: 2.1.0
 description: "Creates AI content policies with disclosure requirements, quality standards, and review workflows for organizations producing AI-assisted content."
-allowed-tools: Read Write Glob
 ---
 
 # AI Content Policy

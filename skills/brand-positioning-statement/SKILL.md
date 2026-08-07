@@ -1,7 +1,7 @@
 ---
 name: Brand Positioning Statement
+version: 1.1.1
 description: "Crafts brand positioning statements with target audience, category, point of difference, reason to believe, and competitive context to define how a brand stands apart in its market."
-allowed-tools: Read Write Glob
 ---
 
 # Brand Positioning Statement

@@ -1,7 +1,7 @@
 ---
 name: ROI Calculator
+version: 1.4.0
 description: "Builds ROI analyses for business investment decisions — tools, hires, campaigns, infrastructure — with cost breakdown, benefit quantification, payback period, and a clear go/no-go recommendation."
-allowed-tools: Read Write Glob
 ---
 
 # ROI Calculator

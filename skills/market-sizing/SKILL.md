@@ -1,7 +1,7 @@
 ---
 name: Market Sizing (TAM/SAM/SOM)
+version: 1.1.9
 description: "Estimates TAM, SAM, and SOM with top-down and bottom-up methodologies, documented assumptions, and presentation-ready outputs for business plans and investment materials."
-allowed-tools: Read Write Glob
 ---
 
 # Market Sizing

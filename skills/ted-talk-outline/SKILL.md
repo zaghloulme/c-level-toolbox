@@ -1,10 +1,14 @@
 ---
 name: TED-Style Talk Outline
+version: 2.1.0
 description: "Structures TED-style talk outlines with narrative arc, audience engagement points, and timing markers for idea-driven presentations."
-allowed-tools: Read Write Glob
 ---
 
 # TED Talk Outline
+
+## Fallback for thin input
+
+**If the user has not supplied their idea, do NOT ask a wall of questions.** Produce a realistic representative 12-minute TED-style outline using a plausible topic for a mid-sized B2B software company CEO (~250 people, ~$40M revenue) — e.g. "why the best AI strategy in enterprise is the one you don't ship first," with full 5-beat structure, timing markers, engagement points, and a specific call. Clearly label the assumed idea at the top, and after delivering the outline, offer to swap in the user's real topic.
 
 ## Core Principle
 

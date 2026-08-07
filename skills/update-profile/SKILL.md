@@ -1,7 +1,7 @@
 ---
 name: Update Profile
+version: 1.0.5
 description: Update any preference in user-config.md — tone, currency, tools, priorities, or anything else stored during setup.
-allowed-tools: Read Write
 ---
 
 # Update Profile

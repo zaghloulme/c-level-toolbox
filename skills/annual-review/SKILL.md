@@ -1,7 +1,7 @@
 ---
 name: Annual Business Review
+version: 1.6.0
 description: "Compiles year-end business reviews with year-over-year metrics, milestone timeline, wins and lessons analysis, and strategic goals for the upcoming year — for internal reflection, stakeholders, or the full leadership team."
-allowed-tools: Read Write Glob
 ---
 
 # Annual Business Review

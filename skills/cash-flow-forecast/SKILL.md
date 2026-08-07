@@ -1,7 +1,7 @@
 ---
 name: Cash Flow Forecast
+version: 1.3.7
 description: "Projects monthly cash flow for 3-12 months from revenue and expense inputs with three scenarios, runway calculations, and decision support for hiring, investment, and spending decisions."
-allowed-tools: Read Write Glob
 ---
 
 # Cash Flow Forecast

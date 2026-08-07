@@ -1,7 +1,7 @@
 ---
 name: Business Plan
+version: 1.2.4
 description: "Writes complete business plans with executive summary, market analysis, revenue model, financial projections, and operational strategy — for new ventures, funding applications, market entries, or strategic planning cycles."
-allowed-tools: Read Write Glob
 ---
 
 # Business Plan

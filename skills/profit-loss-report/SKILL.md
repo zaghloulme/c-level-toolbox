@@ -1,7 +1,7 @@
 ---
 name: Profit and Loss Report
+version: 1.8.5
 description: "Generates monthly or quarterly profit and loss statements from transaction data with revenue breakdowns, expense categories, and margin analysis — for internal performance review or stakeholder reporting."
-allowed-tools: Read Write Glob
 ---
 
 # Profit & Loss Report

@@ -1,7 +1,7 @@
 ---
 name: Financial KPI Dashboard
+version: 1.7.5
 description: "Builds a financial KPI tracking dashboard structure with revenue, expenses, margins, runway, and trend analysis — limited to 8-12 metrics that directly answer whether the business is making money and will continue to."
-allowed-tools: Read Write Glob
 ---
 
 # Financial Dashboard

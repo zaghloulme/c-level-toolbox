@@ -1,7 +1,7 @@
 ---
 name: Product Roadmap Builder
+version: 3.4.8
 description: "Creates product roadmaps in markdown with ICE-scored features, milestones, release timelines, and status tracking — output ready to paste into any project management tool."
-allowed-tools: Read Write Glob
 ---
 
 # Product Roadmap
@@ -137,7 +137,7 @@ Using the approved prioritized list from Phase 2, output the full roadmap as a m
 
 After outputting the table, ask: "Do you want me to save this as a file? I'll use `roadmap-[product-name].md` unless you specify a path."
 
-If saving: use the Write tool to write the roadmap to the specified path.
+If saving: save the roadmapto the specified path.
 
 ### Phase 4: Deliver the Planning Guide
 

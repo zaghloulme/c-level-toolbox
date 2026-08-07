@@ -1,7 +1,7 @@
 ---
 name: LinkedIn Profile Optimizer
+version: 2.2.9
 description: "Optimizes LinkedIn profiles with headline formulas, about section copy, experience descriptions, and keyword strategy for executives and senior professionals."
-allowed-tools: Read Write Glob
 ---
 
 # LinkedIn Profile Optimizer

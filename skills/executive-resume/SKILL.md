@@ -1,7 +1,7 @@
 ---
 name: Executive Resume Writer
+version: 2.1.8
 description: "Writes executive resumes with achievement-focused content, leadership narrative, and ATS-friendly formatting for senior professionals pursuing leadership roles."
-allowed-tools: Read Write Glob
 ---
 
 # Executive Resume

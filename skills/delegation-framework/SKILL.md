@@ -1,7 +1,7 @@
 ---
 name: Delegation Framework
+version: 1.8.5
 description: "Builds task delegation systems with responsibility matrices, handoff templates, accountability tracking, and escalation protocols — for executives and managers transferring ownership to functional leads and team members."
-allowed-tools: Read Write Glob
 ---
 
 # Delegation Framework

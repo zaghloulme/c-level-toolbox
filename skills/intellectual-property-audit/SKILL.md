@@ -1,7 +1,7 @@
 ---
 name: Intellectual Property Audit
+version: 1.5.5
 description: "Conducts a structured audit of an organization's intellectual property assets — trademarks, patents, copyrights, trade secrets, and software — to identify ownership gaps, protection status, and exposure."
-allowed-tools: Read Write Glob
 ---
 
 # Intellectual Property Audit

@@ -1,7 +1,7 @@
 ---
 name: Performance Review System
+version: 2.2.7
 description: "Builds performance review templates with self-assessment, manager feedback, competency ratings, goal tracking, and development planning — for quarterly, biannual, or annual employee review cycles."
-allowed-tools: Read Write Glob
 ---
 
 # Performance Review

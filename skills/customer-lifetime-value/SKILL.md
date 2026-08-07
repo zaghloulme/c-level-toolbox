@@ -1,7 +1,7 @@
 ---
 name: Customer Lifetime Value Calculator
+version: 1.1.4
 description: "Calculates customer lifetime value with segmentation, prediction models, and retention investment recommendations for acquisition budgeting and growth forecasting."
-allowed-tools: Read Write Glob
 ---
 
 # Customer Lifetime Value

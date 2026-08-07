@@ -1,7 +1,7 @@
 ---
 name: Non-Compete Agreement
+version: 1.8.0
 description: "Drafts enforceable non-compete and non-solicitation clauses for employment agreements and separation packages — covering scope of restriction, duration, geography, and consideration, with jurisdiction-specific enforceability notes."
-allowed-tools: Read Write Glob
 ---
 
 ## Legal Disclaimer

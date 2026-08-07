@@ -1,7 +1,7 @@
 ---
 name: Quarterly Business Review
+version: 1.4.0
 description: "Creates quarterly business review documents with metric analysis, goal tracking against OKRs, wins and challenge debrief, and a prioritized plan for the next quarter."
-allowed-tools: Read Write Glob
 ---
 
 # Quarterly Review

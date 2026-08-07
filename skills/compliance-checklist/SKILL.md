@@ -1,7 +1,7 @@
 ---
 name: Regulatory Compliance Checklist
+version: 1.7.5
 description: "Builds tailored regulatory compliance checklists covering applicable laws, licensing requirements, data protection, employment obligations, and audit-readiness — for organizations operating across multiple jurisdictions or regulated industries."
-allowed-tools: Read Write Glob
 ---
 
 # Regulatory Compliance Checklist

@@ -1,7 +1,7 @@
 ---
 name: Investor Update Email
+version: 1.4.9
 description: "Writes monthly or quarterly investor update emails with metrics table, highlights, challenges, and specific asks — in a format investors can read in under 5 minutes."
-allowed-tools: Read Write Glob
 ---
 
 # Investor Update

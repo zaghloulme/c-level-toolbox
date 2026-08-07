@@ -1,7 +1,7 @@
 ---
 name: Hiring Scorecard
+version: 1.6.5
 description: "Creates structured interview scorecards with competency ratings, weighted evaluation criteria, question-to-competency mapping, and a multi-interviewer calibration framework for objective hiring decisions."
-allowed-tools: Read Write Glob
 ---
 
 # Hiring Scorecard

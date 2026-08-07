@@ -1,7 +1,7 @@
 ---
 name: Client Diagnostic Assessment Tool
+version: 1.5.5
 description: "Builds diagnostic assessment tools for consulting engagements with scoring, benchmarking, and recommendation logic that show clients where they stand and what to do next."
-allowed-tools: Read Write Glob
 ---
 
 # Diagnostic Assessment

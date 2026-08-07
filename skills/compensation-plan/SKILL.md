@@ -1,7 +1,7 @@
 ---
 name: Compensation Plan Designer
+version: 1.6.0
 description: "Designs compensation structures with salary bands, bonus frameworks, equity considerations, and market benchmarking for competitive hiring and retention across organizational levels."
-allowed-tools: Read Write Glob
 ---
 
 # Compensation Plan

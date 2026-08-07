@@ -1,7 +1,7 @@
 ---
 name: 12-Month Financial Projection
+version: 1.4.5
 description: "Builds 12-month financial projections with three revenue scenarios, expense forecasting by category, break-even analysis, and a month-by-month P&L summary — for planning, investor presentations, or loan applications."
-allowed-tools: Read Write Glob
 ---
 
 # Financial Projection

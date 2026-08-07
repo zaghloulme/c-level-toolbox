@@ -1,10 +1,14 @@
 ---
 name: Service Productization Framework
+version: 1.6.0
 description: "Converts custom services into fixed-scope, fixed-price offerings with standardized deliverables, pricing tiers, delivery processes, and sales page copy for scalable, repeatable revenue."
-allowed-tools: Read Write Glob
 ---
 
 # Service Productization
+
+## Fallback for thin input
+
+**If the user has not supplied a specific service to productize, do NOT ask a wall of questions.** Produce a realistic representative productization using a plausible service for a mid-sized B2B software company (~250 people, ~$40M revenue) — e.g. an "implementation onboarding" service — with full tier structure, fixed scope, fixed price, and delivery process. Clearly label the assumed service at the top, and after delivering the framework, offer to redo it against the user's real service.
 
 ## Core Principle
 

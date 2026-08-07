@@ -1,7 +1,7 @@
 ---
 name: Quality Assurance Checklist
+version: 1.5.0
 description: "Creates QA checklists for products, services, or content with pass/fail criteria, review workflows, defect tracking, and continuous improvement cycles — for standardizing quality control across teams and delivery processes."
-allowed-tools: Read Write Glob
 ---
 
 # Quality Assurance Checklist

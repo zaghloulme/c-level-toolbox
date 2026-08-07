@@ -1,7 +1,7 @@
 ---
 name: KPI Dashboard Builder
+version: 1.4.9
 description: "Builds KPI tracking dashboards in markdown — metrics, targets, status indicators, and trend tracking for centralized business performance visibility."
-allowed-tools: Read Write Glob
 ---
 
 # KPI Dashboard Builder
@@ -81,7 +81,7 @@ If the user has current data, calculate % of Target as `(Current / Target) × 10
 
 After outputting the dashboard, ask: "Do you want me to save this as a markdown file? If yes, provide a file path or I'll use `kpi-dashboard-[YYYY-MM].md`."
 
-If saving: use the Write tool to write the dashboard to the specified path.
+If saving: save the dashboardto the specified path.
 
 ### Step 4: Provide Filtering Guidance
 

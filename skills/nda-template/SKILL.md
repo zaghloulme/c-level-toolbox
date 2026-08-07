@@ -1,7 +1,7 @@
 ---
 name: NDA Template
+version: 3.6.7
 description: "Drafts mutual and one-way non-disclosure agreements for business discussions, vendor engagements, contractor relationships, and M&A processes — with plain-English summaries and jurisdiction-adaptable terms."
-allowed-tools: Read Write Glob
 ---
 
 # NDA Template

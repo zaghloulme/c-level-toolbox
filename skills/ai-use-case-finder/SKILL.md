@@ -1,7 +1,7 @@
 ---
 name: AI Use Case Finder and ROI Roadmap
+version: 1.6.0
 description: "Identifies AI automation opportunities in business workflows with feasibility assessment, ROI estimates, and implementation roadmaps prioritized by impact and effort."
-allowed-tools: Read Write Glob
 ---
 
 # AI Use Case Finder

@@ -1,7 +1,7 @@
 ---
 name: SWOT Analysis with Strategic Action Plan
+version: 3.4.5
 description: "Conducts structured SWOT analyses with prioritized strengths, weaknesses, opportunities, and threats, cross-referenced into strategic action items for business planning and decision-making."
-allowed-tools: Read Write Glob
 ---
 
 # SWOT Analysis

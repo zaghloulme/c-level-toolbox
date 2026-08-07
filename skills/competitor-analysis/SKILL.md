@@ -1,7 +1,7 @@
 ---
 name: Competitor Analysis
+version: 3.4.8
 description: "Conducts structured competitor analysis with comparison matrices, positioning maps, gap identification, threat assessment, and strategic recommendations — for executives mapping competitive landscapes, preparing go-to-market strategies, or making positioning decisions."
-allowed-tools: Read Write Glob
 ---
 
 # Competitor Analysis
@@ -204,7 +204,7 @@ Save the analysis based on the user's preference.
 
 ### Save the Analysis
 
-1. Write the full analysis to a markdown file using the Write tool
+1. Write the full analysis to a markdown file 
 2. Default filename: `competitor-analysis-[category].md` — ask for a preferred path if the user specifies one
 3. Include all sections: matrix, SWOTs, gaps, threats, recommendations
 

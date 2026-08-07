@@ -1,7 +1,7 @@
 ---
 name: Revenue Model and Growth Projections
+version: 1.4.0
 description: "Designs revenue models with pricing tiers, unit economics, LTV calculations, and growth projections for validating business revenue strategy."
-allowed-tools: Read Write Glob
 ---
 
 # Revenue Model

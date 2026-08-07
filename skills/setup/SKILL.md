@@ -1,7 +1,7 @@
 ---
 name: Setup
+version: 1.0.6
 description: First-run onboarding. Collects user preferences and writes user-config.md to personalize every skill in the toolbox.
-allowed-tools: Read Write
 ---
 
 # C Level Toolbox — Setup

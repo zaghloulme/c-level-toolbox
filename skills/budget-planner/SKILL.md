@@ -1,7 +1,7 @@
 ---
 name: Business Budget Planner
+version: 1.4.5
 description: "Creates monthly and annual business budgets with category breakdowns, variance tracking templates, and adjustment triggers tied to revenue and expense thresholds."
-allowed-tools: Read Write Glob
 ---
 
 # Budget Planner

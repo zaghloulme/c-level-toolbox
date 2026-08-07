@@ -1,7 +1,7 @@
 ---
 name: Cost Structure and Margin Analysis
+version: 1.3.5
 description: "Calculates the true cost to produce and deliver a product or service — direct costs, overhead allocation, and per-unit margins — then identifies where cost reductions will actually move the needle."
-allowed-tools: Read Write Glob
 ---
 
 # Cost Analysis

@@ -1,7 +1,7 @@
 ---
 name: Break-Even Analysis
+version: 1.2.0
 description: "Calculates the break-even point from fixed costs, variable costs, and price — then models how price changes, cost changes, and volume changes shift that threshold."
-allowed-tools: Read Write Glob
 ---
 
 # Break-Even Analysis

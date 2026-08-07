@@ -1,7 +1,7 @@
 ---
 name: Financial Model Builder
+version: 1.6.5
 description: "Builds bottoms-up financial models with documented revenue drivers, cost assumptions, headcount plans, cash flow projections, and sensitivity analysis — for internal planning or investor-ready fundraising."
-allowed-tools: Read Write Glob
 ---
 
 # Financial Model

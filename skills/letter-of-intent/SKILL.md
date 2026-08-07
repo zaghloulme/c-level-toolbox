@@ -1,7 +1,7 @@
 ---
 name: Letter of Intent
+version: 1.8.0
 description: "Drafts non-binding letters of intent for corporate acquisitions, partnerships, joint ventures, and commercial agreements — covering deal structure, key terms, exclusivity, and due diligence conditions."
-allowed-tools: Read Write Glob
 ---
 
 # Letter of Intent

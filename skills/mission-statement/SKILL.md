@@ -1,7 +1,7 @@
 ---
 name: Mission, Vision, and Values Statement
+version: 1.7.0
 description: "Crafts organization mission, vision, and values statements with stakeholder input process and alignment exercises that connect purpose to daily decisions."
-allowed-tools: Read Write Glob
 ---
 
 # Mission Statement

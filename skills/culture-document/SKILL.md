@@ -1,7 +1,7 @@
 ---
 name: Company Culture Document
+version: 1.8.5
 description: "Writes company culture documents with values, behavioral definitions, rituals, and operating norms for team alignment and hiring."
-allowed-tools: Read Write Glob
 ---
 
 # Culture Document

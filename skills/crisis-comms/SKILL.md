@@ -1,7 +1,7 @@
 ---
 name: Crisis Communications Response Plan
+version: 1.4.8
 description: "Creates crisis communication plans with response templates, escalation protocols, and stakeholder messaging for business emergencies and PR incidents."
-allowed-tools: Read Write Glob
 ---
 
 # Crisis Communications

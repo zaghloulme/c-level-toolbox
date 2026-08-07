@@ -1,7 +1,7 @@
 ---
 name: One-on-One Meeting Template
+version: 1.5.0
 description: "Designs recurring 1:1 meeting templates with check-in questions, priorities alignment, career development discussion, and action item tracking — for consistent, trust-building manager-report conversations."
-allowed-tools: Read Write Glob
 ---
 
 # One-on-One Template

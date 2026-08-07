@@ -1,7 +1,7 @@
 ---
 name: Decision Matrix
+version: 1.3.5
 description: "Creates weighted decision matrices for business choices with criteria, scoring, recommendation logic, and sensitivity analysis — for removing bias from multi-criteria decisions and documenting rationale for stakeholders."
-allowed-tools: Read Write Glob
 ---
 
 # Decision Matrix

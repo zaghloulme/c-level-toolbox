@@ -1,7 +1,7 @@
 ---
 name: Partnership Agreement
+version: 2.2.9
 description: "Drafts corporate partnership agreements covering capital contributions, ownership splits, roles, profit distribution, decision authority, buyout provisions, and dissolution terms — for joint ventures and co-owned business structures."
-allowed-tools: Read Write Glob
 ---
 
 ## Legal Disclaimer

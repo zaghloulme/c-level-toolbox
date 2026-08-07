@@ -1,7 +1,7 @@
 ---
 name: Annual Report Writer
+version: 1.6.5
 description: "Produces structured annual reports with executive summary, financial performance, operational highlights, strategic outlook, and stakeholder narrative — for organizations reporting to boards, investors, or regulatory bodies."
-allowed-tools: Read Write Glob
 ---
 
 # Annual Report Writer

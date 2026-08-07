@@ -1,7 +1,7 @@
 ---
 name: Churn Analysis and Retention Planning
+version: 1.2.9
 description: "Analyzes customer or subscriber churn with cohort breakdowns, exit reason mapping, segment risk scoring, and a structured retention action plan — for organizations managing recurring revenue or subscription-based relationships."
-allowed-tools: Read Write Glob
 ---
 
 # Churn Analysis & Retention Planning

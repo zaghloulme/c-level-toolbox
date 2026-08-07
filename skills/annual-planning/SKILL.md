@@ -1,7 +1,7 @@
 ---
 name: Annual Strategic Planning
+version: 1.8.0
 description: "Guides annual business planning with prior-year review, strategic objective setting, quarterly milestone cascades, resource allocation, and execution rhythm — for organizations aligning leadership teams around annual priorities."
-allowed-tools: Read Write Glob
 ---
 
 # Annual Strategic Planning

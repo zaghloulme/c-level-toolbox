@@ -1,7 +1,7 @@
 ---
 name: Industry Benchmarking Report
+version: 1.1.3
 description: "Creates industry benchmarking reports comparing business metrics against standards and best-in-class performers to identify performance gaps and set realistic targets."
-allowed-tools: Read Write Glob
 ---
 
 # Benchmarking Report

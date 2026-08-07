@@ -1,7 +1,7 @@
 ---
 name: OKR Builder
+version: 1.4.0
 description: "Creates Objectives and Key Results frameworks with aspirational objective setting, measurable key result definition, scoring rubrics, and quarterly check-in cadence — for aligning teams around shared strategic goals."
-allowed-tools: Read Write Glob
 ---
 
 # OKR Builder

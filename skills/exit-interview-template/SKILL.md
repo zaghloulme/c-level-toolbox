@@ -1,7 +1,7 @@
 ---
 name: Exit Interview Template
+version: 1.1.9
 description: "Creates structured exit interview question sets and written survey versions with interviewer guides, data tracking, and a retention action framework — for capturing honest feedback from departing employees."
-allowed-tools: Read Write Glob
 ---
 
 # Exit Interview Template

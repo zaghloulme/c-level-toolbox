@@ -1,7 +1,7 @@
 ---
 name: Joint Venture Proposal
+version: 1.6.0
 description: "Writes joint venture proposals with value exchange analysis, revenue sharing structure, responsibility matrices, and exit terms — for organizations proposing partnerships where two parties co-invest resources to create shared value."
-allowed-tools: Read Write Glob
 ---
 
 # Joint Venture Proposal

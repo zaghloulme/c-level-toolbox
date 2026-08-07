@@ -1,7 +1,7 @@
 ---
 name: Strategic Partnership Proposal
+version: 3.2.5
 description: "Creates strategic partnership pitch documents with mutual value propositions, deal structures, and terms for joint ventures, co-marketing deals, revenue sharing, and strategic alliances."
-allowed-tools: Read Write Glob
 ---
 
 # Partnership Proposal

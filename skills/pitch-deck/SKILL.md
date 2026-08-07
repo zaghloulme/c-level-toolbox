@@ -1,7 +1,7 @@
 ---
 name: Pitch Deck Builder
-description: "Builds complete investor or client pitch decks as structured markdown — slide-by-slide content ready to paste into PowerPoint, Google Slides, or Keynote — for fundraising, client proposals, partnership pitches, or keynote presentations."
-allowed-tools: Read Write Glob
+version: 2.4.1
+description: "Builds complete investor, client, or partnership pitch decks — slide-by-slide content with problem, solution, market, traction, team, and ask — for fundraising, client proposals, and keynote presentations. Delivers markdown inline by default; can produce a file if requested and if a suitable tool is available."
 ---
 
 # Pitch Deck
@@ -99,7 +99,7 @@ Write all slides in sequence without pausing. After the final slide, ask:
 
 "Want me to save this as a file? I'll write it to `pitch-deck-[company-name].md` unless you specify a path."
 
-If saving: use the Write tool to write the complete deck to the specified path.
+If saving: save the complete deckto the specified path.
 
 **GATE: Present all slides before asking for refinements.**
 
@@ -116,7 +116,7 @@ If 3 rounds of revision do not resolve the issue, ask: "What outcome are you try
 
 ## Phase 5: Deliver the Final Deck
 
-1. Write the final approved deck to a file using the Write tool: `pitch-deck-[company-name]-final.md`
+1. Write the final approved deck to a file : `pitch-deck-[company-name]-final.md`
 2. Confirm the file path to the user
 3. Provide paste instructions:
 

@@ -1,7 +1,7 @@
 ---
 name: Expert Positioning and Thought Leadership Strategy
+version: 1.3.1
 description: "Builds expert positioning strategies with thought leadership plans, speaking opportunities, content pillars, and visibility systems that attract premium opportunities and inbound interest."
-allowed-tools: Read Write Glob
 ---
 
 # Expert Positioning

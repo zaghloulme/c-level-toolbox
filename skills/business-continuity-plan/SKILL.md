@@ -1,7 +1,7 @@
 ---
 name: Business Continuity Plan
+version: 1.6.0
 description: "Develops business continuity plans with risk assessment, critical function mapping, recovery procedures, and crisis communication protocols — for organizations preparing for operational disruptions."
-allowed-tools: Read Write Glob
 ---
 
 # Business Continuity Plan

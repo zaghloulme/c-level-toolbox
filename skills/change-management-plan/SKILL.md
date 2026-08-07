@@ -1,7 +1,7 @@
 ---
 name: Change Management Plan
+version: 1.6.5
 description: "Creates change management plans with stakeholder analysis, communication strategy, phased rollout timelines, and success metrics — for organizations rolling out process, tool, or structural transitions."
-allowed-tools: Read Write Glob
 ---
 
 # Change Management Plan

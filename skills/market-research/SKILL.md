@@ -1,7 +1,7 @@
 ---
 name: Market Research and Opportunity Analysis
+version: 1.2.3
 description: "Conducts market sizing, trend analysis, audience segmentation, and opportunity assessment for business ideas, new markets, and strategic decisions."
-allowed-tools: Read Write Glob
 ---
 
 # Market Research

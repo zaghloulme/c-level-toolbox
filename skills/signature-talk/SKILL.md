@@ -1,10 +1,18 @@
 ---
 name: Signature Keynote Talk Builder
+version: 1.4.0
 description: "Develops signature keynote talks with modular sections, audience customization guides, and delivery notes for conferences, summits, and executive speaking engagements."
-allowed-tools: Read Write Glob
 ---
 
 # Signature Talk
+
+## Fallback for thin input
+
+**If the user has not supplied their idea, do NOT ask a wall of questions.** Produce a realistic representative 30-minute signature keynote using a plausible topic for a mid-sized B2B software company CEO (~250 people, ~$40M revenue) — e.g. "how mid-market SaaS wins the enterprise AI wave without losing its soul" — with all five modular sections, an audience customization guide (investor / client / conference / internal), speaker notes card, slide outline, and quality checklist. Deliver every section in full inline. Clearly label the assumed topic at the top, and after delivering the talk, offer to swap in the user's real topic.
+
+## Delivery guard
+
+**Never truncate. Never substitute a table-of-contents for actual content.** If the full deliverable would exceed a single message, deliver Pass 1 (Modules 1-2, plus the audience customization guide) in full, then ask "Continue with Modules 3-5, speaker notes, and quality checklist?" before Pass 2. Both passes must be complete prose in-chat, not summaries.
 
 ## Core Principle
 

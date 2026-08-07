@@ -1,7 +1,7 @@
 ---
 name: Pricing Strategy
+version: 1.4.5
 description: "Develops pricing strategies with market positioning, value-based analysis, tier structure design, and price sensitivity testing — for setting or revising prices on products or services."
-allowed-tools: Read Write Glob
 ---
 
 # Pricing Strategy

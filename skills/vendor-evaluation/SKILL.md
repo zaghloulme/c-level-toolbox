@@ -1,7 +1,7 @@
 ---
 name: Vendor Evaluation
+version: 3.9.8
 description: "Creates structured vendor and supplier comparison matrices with weighted scoring, total cost of ownership analysis, and recommendation summaries — for procurement decisions involving multiple candidates across software, services, or physical suppliers."
-allowed-tools: Read Write Glob
 ---
 
 # Vendor Evaluation
@@ -228,7 +228,7 @@ Save the evaluation based on the user's preference.
 
 ### Save the Evaluation
 
-1. Write the full evaluation to a markdown file using the Write tool
+1. Write the full evaluation to a markdown file 
 2. Default filename: `vendor-evaluation-[category].md` — ask for a preferred path if the user specifies one
 3. Include all sections: scoring matrix, cost analysis, vendor profiles, recommendation, next steps
 

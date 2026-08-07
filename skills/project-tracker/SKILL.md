@@ -1,10 +1,14 @@
 ---
 name: Project Tracker
+version: 3.4.3
 description: "Creates a project management task list in markdown with tasks, statuses, owners, due dates, and priorities — pre-populated from a project brief or scope document, for teams replacing spreadsheet-based task management."
-allowed-tools: Read Write Glob
 ---
 
 # Project Tracker
+
+## Fallback for thin input
+
+**If the user has not supplied specific project details, do NOT ask a wall of questions.** Produce a realistic representative task list using reasonable defaults for a mid-sized B2B software company (~250 people, ~$40M revenue) — e.g. a 12-week product launch project with 10-15 tasks across owners, statuses, priorities, and dependencies. Clearly label the assumed context at the top, and after delivering the tracker, offer to swap in the user's real project data.
 
 ## Quick Reference: Project Tracker Features
 
@@ -150,7 +154,7 @@ Total: [N] tasks | Assigned: [N] | Unassigned: [N] | Milestones: [N]
 
 Then ask: "Do you want me to save this as a file? I'll use `tracker-[project-name].md` unless you specify a path."
 
-If saving: use the Write tool to write the full tracker to the specified path.
+If saving: save the full trackerto the specified path.
 
 ### Phase 4: Deliver and Close
 
@@ -257,11 +261,11 @@ Pre-Delivery Checklist:
 
 ### User Wants to Add More Columns Later
 
-The markdown table can be extended by adding columns. To add a new column: add the header to the `|` row and a corresponding cell to every data row. If the file was saved, use the Write tool to overwrite it with the updated version.
+The markdown table can be extended by adding columns. To add a new column: add the header to the `|` row and a corresponding cell to every data row. If a file was previously saved, overwrite it with the updated version.
 
 ### User Wants to Add More Tasks Later
 
-Parse the new tasks using the same mapping rules in Phase 2. Add new rows to the existing table grouped by Phase. If the file was saved, use the Write tool to overwrite it with the updated rows appended.
+Parse the new tasks using the same mapping rules in Phase 2. Add new rows to the existing table grouped by Phase. If a file was previously saved, overwrite it with the updated rows appended.
 
 ### Duplicate Detection
 

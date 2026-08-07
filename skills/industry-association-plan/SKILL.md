@@ -1,7 +1,7 @@
 ---
 name: Industry Association Strategy
+version: 1.4.5
 description: "Plans strategic involvement in industry associations with membership selection, participation roadmaps, and leadership positioning to build authority and generate business opportunities."
-allowed-tools: Read Write Glob
 ---
 
 # Industry Association Plan
