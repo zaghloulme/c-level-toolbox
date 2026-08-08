@@ -29,11 +29,11 @@ Claude asks a few short questions (name, role, currency, tone, priorities) and w
 
 ### Claude.ai (web) and Claude Desktop
 
-Anthropic supports one-skill-at-a-time upload:
+Anthropic supports one-skill-at-a-time upload via the web/desktop UI:
 
-1. Grab the ZIP for the skill you want from the [Releases page](https://github.com/zaghloulme/c-level-toolbox/releases)
+1. Clone or download this repo: `git clone https://github.com/zaghloulme/c-level-toolbox.git`
 2. In Claude, open **Settings → Capabilities → Skills → Upload**
-3. Select the ZIP; toggle the skill on
+3. Select the skill folder you want from `skills/` and toggle it on
 
 Repeat per skill. There is no whole-toolbox upload on web/Desktop today.
 
