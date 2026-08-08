@@ -51,7 +51,7 @@ Type `/update-profile` — update any preferences at any time
 
 ### Legal & Compliance
 `/compliance-checklist` `/intellectual-property-audit` `/letter-of-intent`
-`/nda-template` `/non-compete-agreement` `/partnership-agreement`
+`/non-compete-agreement` `/partnership-agreement`
 
 ### Sales & Strategy
 `/business-plan` `/competitor-analysis` `/joint-venture-proposal` `/market-research`
@@ -62,7 +62,7 @@ Type `/update-profile` — update any preferences at any time
 `/annual-report-writer` `/churn-analysis`
 
 ### AI & Technology
-`/ai-content-policy` `/ai-ethics-policy` `/ai-use-case-finder`
+`/ai-use-case-finder`
 
 ### Analytics & Data
 `/benchmarking-report` `/customer-lifetime-value` `/kpi-dashboard`

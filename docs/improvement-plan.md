@@ -185,3 +185,8 @@ These deliver but with minor room to improve. No fix required for ship-readiness
 ## Skills scoring 5 (49)
 
 These match their stated purpose in the real-world test. No action needed. See `scorecard.md` for the full list.
+---
+
+## Post-publication changes (2026-08-08)
+
+Removed from the toolbox: `nda-template`, `ai-ethics-policy`, `ai-content-policy`. The P1 fix for `ai-content-policy` is retained here for reference only — the skill no longer ships.

@@ -1,10 +1,10 @@
 # C-Level Toolbox
 
-71 Claude skills for the recurring work of running a company — strategy, finance, sales, product, HR, operations, legal, communications, and decision frameworks.
+68 Claude skills for the recurring work of running a company — strategy, finance, sales, product, HR, operations, communications, and decision frameworks.
 
 Every skill produces a complete deliverable, not a blank template. Zero external tools, zero accounts to connect, zero API keys.
 
-**Browse all 71 skills →** open [`skills.html`](./skills.html) in your browser.
+**Browse all 68 skills →** open [`skills.html`](./skills.html) in your browser.
 
 ---
 
@@ -50,7 +50,7 @@ Repeat per skill. There is no whole-toolbox upload on web/Desktop today.
 | Product & Roadmap | 3 | `product-roadmap`, `ai-use-case-finder`, `service-productization` |
 | People & HR | 8 | `performance-review`, `compensation-plan`, `hiring-scorecard`, `employee-survey` |
 | Operations & Projects | 9 | `project-tracker`, `risk-assessment`, `vendor-evaluation`, `annual-review` |
-| Legal & Compliance | 9 | `nda-template`, `compliance-checklist`, `ip-audit`, `partnership-agreement` |
+| Legal & Compliance | 6 | `compliance-checklist`, `ip-audit`, `letter-of-intent`, `partnership-agreement` |
 | Communication & Content | 6 | `signature-talk`, `ted-talk-outline`, `investor-update`, `crisis-comms` |
 | Decision Frameworks | 4 | `decision-matrix`, `consulting-framework`, `benchmarking-report` |
 
@@ -66,7 +66,6 @@ Examples:
 
 - "Build me a Series A pitch deck." → 12-slide deck in markdown, problem through ask
 - "Forecast cash flow for the next 12 months, three scenarios." → conservative/base/optimistic, month-by-month, break-even
-- "Draft a mutual NDA for a vendor conversation." → complete agreement with legal-review disclaimer
 - "Score these three vendors." → weighted comparison matrix + recommendation
 
 Every skill reads your `user-config.md` first, so tone, currency, and priorities match how you actually work.

@@ -133,3 +133,14 @@ Applied the fix patterns from `improvement-plan.md` and retested. Also stripped 
 - `setup`, `update-profile` — conversational utilities, not real defects. Excluded from artifact-producing test category going forward.
 
 **Net result:** score-5 count improved from 49 to at least 55 of 71 (verified subset). Zero regressions detected in the 10-skill regression sample.
+
+---
+
+## Post-publication changes (2026-08-08)
+
+Removed from the toolbox (out of scope, per user):
+- `nda-template` — legal-team domain, not C-level
+- `ai-ethics-policy` — out of scope
+- `ai-content-policy` — out of scope
+
+Final toolbox size: **68 skills**.

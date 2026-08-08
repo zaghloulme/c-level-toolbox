@@ -1,7 +1,7 @@
 {
   "name": "c-level-toolbox",
   "displayName": "C Level Toolbox",
-  "description": "71 skills for C-level leaders \u2014 strategy, finance, sales, product, HR, operations, legal, communications, and decision frameworks. Every skill produces a complete deliverable inline. Zero external tool dependencies.",
+  "description": "68 skills for C-level leaders \u2014 strategy, finance, sales, product, HR, operations, legal, communications, and decision frameworks. Every skill produces a complete deliverable inline. Zero external tool dependencies.",
   "version": "3.2.0",
   "author": {
     "name": "Ahmed Zaghloul",
@@ -20,8 +20,6 @@
     "operations"
   ],
   "skills": [
-    "ai-content-policy",
-    "ai-ethics-policy",
     "ai-use-case-finder",
     "annual-planning",
     "annual-report-writer",
@@ -65,7 +63,6 @@
     "market-research",
     "market-sizing",
     "mission-statement",
-    "nda-template",
     "non-compete-agreement",
     "okr-builder",
     "one-on-one-template",
