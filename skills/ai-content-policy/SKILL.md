@@ -6,6 +6,12 @@ description: "Creates AI content policies with disclosure requirements, quality 
 
 # AI Content Policy
 
+## What this skill produces
+
+**This skill produces a policy document** — the organizational rules governing how the company creates, reviews, and discloses AI-assisted content. Sections include: scope, disclosure requirements, quality standards, human review workflow, prohibited uses, accountability, and enforcement.
+
+**It does NOT produce AI-assisted content itself.** If asked for a blog post, marketing copy, or article, redirect: "This skill writes the policy that governs how your team creates such content. For the content itself, use a copywriting or content skill."
+
 ## Core Principle
 
 AI CONTENT POLICY EXISTS TO MAINTAIN QUALITY AND TRUST — EVERY AI-GENERATED PIECE MUST BE REVIEWED, EDITED, AND APPROVED BY A HUMAN BEFORE IT REACHES YOUR AUDIENCE.

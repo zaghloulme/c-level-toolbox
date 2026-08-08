@@ -6,6 +6,12 @@ description: "Compiles year-end business reviews with year-over-year metrics, mi
 
 # Annual Business Review
 
+## What this skill produces
+
+**This skill produces a year-end business review compiled from the user's actual data.** Year-over-year metrics, milestone timeline, wins and lessons, strategic goals — every figure and event must come from the user or from files they point to.
+
+**Never fabricate a fictional company's review.** If no data has been provided, first ask the user for their metrics and milestones, or ask for a file path. Alternatively, offer to produce a clearly-labelled sample review using representative defaults for a mid-sized B2B software company (~250 people, ~$40M revenue) that the user can then adapt.
+
 ## Core Principle
 
 EVERY NUMBER TELLS A STORY — DO NOT LIST METRICS WITHOUT EXPLAINING WHAT THEY MEAN FOR THE BUSINESS GOING FORWARD.

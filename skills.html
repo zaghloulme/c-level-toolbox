@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C-Level Toolbox — Skill Catalogue</title>
+<style>
+:root {
+  --bg: #f7f7f5;
+  --card: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #0a5c8a;
+  --accent-soft: #e6f0f5;
+  --border: #e2e2df;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+header.hero {
+  padding: 64px 32px 40px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px 0;
+}
+.lede {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 720px;
+  margin: 0 0 24px 0;
+}
+.meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 14px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.meta strong { color: var(--ink); font-weight: 600; }
+
+.controls {
+  position: sticky;
+  top: 0;
+  background: rgba(247,247,245,0.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 32px;
+  z-index: 10;
+}
+.controls-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#search {
+  flex: 1;
+  min-width: 240px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  background: var(--card);
+  transition: border-color 0.15s;
+}
+#search:focus { outline: none; border-color: var(--accent); }
+nav.cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.nav-cat {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  background: var(--card);
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-cat:hover { border-color: var(--accent); color: var(--accent); }
+.nav-cat .count {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px;
+}
+.category {
+  margin-bottom: 56px;
+  scroll-margin-top: 100px;
+}
+.cat-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.cat-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06), 0 12px 24px rgba(0,0,0,0.04);
+}
+.card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.version {
+  font-family: ui-monospace, SF Mono, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--bg);
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.summary {
+  font-size: 14px;
+  color: var(--ink);
+  margin: 0 0 10px 0;
+}
+.context {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 14px 0;
+  line-height: 1.5;
+}
+.context .label {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.card footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.folder {
+  font-family: ui-monospace, SF Mono, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+.card.hidden { display: none; }
+.category.hidden { display: none; }
+footer.site {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 640px) {
+  header.hero { padding: 40px 20px 24px; }
+  h1 { font-size: 28px; }
+  main { padding: 20px; }
+  .controls { padding: 12px 20px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>C-Level Toolbox</h1>
+  <p class="lede">
+    71 Claude skills for the recurring work of running a company — strategy, finance, sales, operations, people, and communications. Each skill is a self-contained deliverable-producer: describe what you need, and Claude produces the full artefact.
+  </p>
+  <div class="meta">
+    <span><strong>71</strong> skills</span>
+    <span><strong>10</strong> categories</span>
+    <span><strong>Zero</strong> external tool dependencies</span>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <input id="search" type="search" placeholder="Search skills by name or description…" autocomplete="off">
+    <nav class="cats">
+      <a href="#setup" class="nav-cat">Setup <span class="count">2</span></a><a href="#strategy-planning" class="nav-cat">Strategy &amp; Planning <span class="count">7</span></a><a href="#finance-metrics" class="nav-cat">Finance &amp; Metrics <span class="count">15</span></a><a href="#sales-marketing" class="nav-cat">Sales &amp; Marketing <span class="count">8</span></a><a href="#product-roadmap" class="nav-cat">Product &amp; Roadmap <span class="count">3</span></a><a href="#people-hr" class="nav-cat">People &amp; HR <span class="count">8</span></a><a href="#operations-projects" class="nav-cat">Operations &amp; Projects <span class="count">9</span></a><a href="#legal-compliance" class="nav-cat">Legal &amp; Compliance <span class="count">9</span></a><a href="#communication-content" class="nav-cat">Communication &amp; Content <span class="count">6</span></a><a href="#decision-frameworks" class="nav-cat">Decision Frameworks <span class="count">4</span></a>
+    </nav>
+  </div>
+</div>
+
+<main>
+<section id="setup" class="category">
+<h2 class="cat-title">Setup <span class="cat-count">2 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="setup" data-desc="first-run onboarding. collects user preferences and writes user-config.md to personalize every skill in the toolbox.">
+  <header>
+    <h3>Setup</h3>
+    <span class="version">v1.0.6</span>
+  </header>
+  <p class="summary">First-run onboarding.</p>
+  
+  <footer>
+    <code class="folder">skills/setup/</code>
+  </footer>
+</article>
+<article class="card" data-name="update profile" data-desc="update any preference in user-config.md — tone, currency, tools, priorities, or anything else stored during setup.">
+  <header>
+    <h3>Update Profile</h3>
+    <span class="version">v1.0.5</span>
+  </header>
+  <p class="summary">Update any preference in user-config.md.</p>
+  <p class="context"><span class="label">When to use:</span> tone, currency, tools, priorities, or anything else stored during setup.</p>
+  <footer>
+    <code class="folder">skills/update-profile/</code>
+  </footer>
+</article>
+</div></section>
+<section id="strategy-planning" class="category">
+<h2 class="cat-title">Strategy &amp; Planning <span class="cat-count">7 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="annual strategic planning" data-desc="guides annual business planning with prior-year review, strategic objective setting, quarterly milestone cascades, resource allocation, and execution rhythm — for organizations aligning leadership teams around annual priorities.">
+  <header>
+    <h3>Annual Strategic Planning</h3>
+    <span class="version">v1.8.0</span>
+  </header>
+  <p class="summary">Guides annual business planning with prior-year review, strategic objective setting, quarterly milestone cascades, resource allocation, and execution rhythm.</p>
+  <p class="context"><span class="label">When to use:</span> for organizations aligning leadership teams around annual priorities.</p>
+  <footer>
+    <code class="folder">skills/annual-planning/</code>
+  </footer>
+</article>
+<article class="card" data-name="brand positioning statement" data-desc="crafts brand positioning statements with target audience, category, point of difference, reason to believe, and competitive context to define how a brand stands apart in its market.">
+  <header>
+    <h3>Brand Positioning Statement</h3>
+    <span class="version">v1.1.1</span>
+  </header>
+  <p class="summary">Crafts brand positioning statements with target audience, category, point of difference, reason to believe, and competitive context to define how a brand stands apart in its market.</p>
+  
+  <footer>
+    <code class="folder">skills/brand-positioning-statement/</code>
+  </footer>
+</article>
+<article class="card" data-name="business plan" data-desc="writes complete business plans with executive summary, market analysis, revenue model, financial projections, and operational strategy — for new ventures, funding applications, market entries, or strategic planning cycles.">
+  <header>
+    <h3>Business Plan</h3>
+    <span class="version">v1.2.4</span>
+  </header>
+  <p class="summary">Writes complete business plans with executive summary, market analysis, revenue model, financial projections, and operational strategy.</p>
+  <p class="context"><span class="label">When to use:</span> for new ventures, funding applications, market entries, or strategic planning cycles.</p>
+  <footer>
+    <code class="folder">skills/business-plan/</code>
+  </footer>
+</article>
+<article class="card" data-name="industry association strategy" data-desc="plans strategic involvement in industry associations with membership selection, participation roadmaps, and leadership positioning to build authority and generate business opportunities.">
+  <header>
+    <h3>Industry Association Strategy</h3>
+    <span class="version">v1.4.5</span>
+  </header>
+  <p class="summary">Plans strategic involvement in industry associations with membership selection, participation roadmaps, and leadership positioning to build authority and generate business opportunities.</p>
+  
+  <footer>
+    <code class="folder">skills/industry-association-plan/</code>
+  </footer>
+</article>
+<article class="card" data-name="mission, vision, and values statement" data-desc="crafts organization mission, vision, and values statements with stakeholder input process and alignment exercises that connect purpose to daily decisions.">
+  <header>
+    <h3>Mission, Vision, and Values Statement</h3>
+    <span class="version">v1.7.0</span>
+  </header>
+  <p class="summary">Crafts organization mission, vision, and values statements with stakeholder input process and alignment exercises that connect purpose to daily decisions.</p>
+  
+  <footer>
+    <code class="folder">skills/mission-statement/</code>
+  </footer>
+</article>
+<article class="card" data-name="okr builder" data-desc="creates objectives and key results frameworks with aspirational objective setting, measurable key result definition, scoring rubrics, and quarterly check-in cadence — for aligning teams around shared strategic goals.">
+  <header>
+    <h3>OKR Builder</h3>
+    <span class="version">v1.4.0</span>
+  </header>
+  <p class="summary">Creates Objectives and Key Results frameworks with aspirational objective setting, measurable key result definition, scoring rubrics, and quarterly check-in cadence.</p>
+  <p class="context"><span class="label">When to use:</span> for aligning teams around shared strategic goals.</p>
+  <footer>
+    <code class="folder">skills/okr-builder/</code>
+  </footer>
+</article>
+<article class="card" data-name="swot analysis with strategic action plan" data-desc="conducts structured swot analyses with prioritized strengths, weaknesses, opportunities, and threats, cross-referenced into strategic action items for business planning and decision-making.">
+  <header>
+    <h3>SWOT Analysis with Strategic Action Plan</h3>
+    <span class="version">v3.4.5</span>
+  </header>
+  <p class="summary">Conducts structured SWOT analyses with prioritized strengths, weaknesses, opportunities, and threats, cross-referenced into strategic action items for business planning and decision-making.</p>
+  
+  <footer>
+    <code class="folder">skills/swot-analysis/</code>
+  </footer>
+</article>
+</div></section>
+<section id="finance-metrics" class="category">
+<h2 class="cat-title">Finance &amp; Metrics <span class="cat-count">15 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="12-month financial projection" data-desc="builds 12-month financial projections with three revenue scenarios, expense forecasting by category, break-even analysis, and a month-by-month p&amp;l summary — for planning, investor presentations, or loan applications.">
+  <header>
+    <h3>12-Month Financial Projection</h3>
+    <span class="version">v1.4.5</span>
+  </header>
+  <p class="summary">Builds 12-month financial projections with three revenue scenarios, expense forecasting by category, break-even analysis, and a month-by-month P&amp;L summary.</p>
+  <p class="context"><span class="label">When to use:</span> for planning, investor presentations, or loan applications.</p>
+  <footer>
+    <code class="folder">skills/financial-projection/</code>
+  </footer>
+</article>
+<article class="card" data-name="break-even analysis" data-desc="calculates the break-even point from fixed costs, variable costs, and price — then models how price changes, cost changes, and volume changes shift that threshold.">
+  <header>
+    <h3>Break-Even Analysis</h3>
+    <span class="version">v1.2.0</span>
+  </header>
+  <p class="summary">Calculates the break-even point from fixed costs, variable costs, and price.</p>
+  <p class="context"><span class="label">When to use:</span> then models how price changes, cost changes, and volume changes shift that threshold.</p>
+  <footer>
+    <code class="folder">skills/breakeven-analysis/</code>
+  </footer>
+</article>
+<article class="card" data-name="business budget planner" data-desc="creates monthly and annual business budgets with category breakdowns, variance tracking templates, and adjustment triggers tied to revenue and expense thresholds.">
+  <header>
+    <h3>Business Budget Planner</h3>
+    <span class="version">v1.4.5</span>
+  </header>
+  <p class="summary">Creates monthly and annual business budgets with category breakdowns, variance tracking templates, and adjustment triggers tied to revenue and expense thresholds.</p>
+  
+  <footer>
+    <code class="folder">skills/budget-planner/</code>
+  </footer>
+</article>
+<article class="card" data-name="cash flow forecast" data-desc="projects monthly cash flow for 3-12 months from revenue and expense inputs with three scenarios, runway calculations, and decision support for hiring, investment, and spending decisions.">
+  <header>
+    <h3>Cash Flow Forecast</h3>
+    <span class="version">v1.3.7</span>
+  </header>
+  <p class="summary">Projects monthly cash flow for 3-12 months from revenue and expense inputs with three scenarios, runway calculations, and decision support for hiring, investment, and spending decisions.</p>
+  
+  <footer>
+    <code class="folder">skills/cash-flow-forecast/</code>
+  </footer>
+</article>
+<article class="card" data-name="cost structure and margin analysis" data-desc="calculates the true cost to produce and deliver a product or service — direct costs, overhead allocation, and per-unit margins — then identifies where cost reductions will actually move the needle.">
+  <header>
+    <h3>Cost Structure and Margin Analysis</h3>
+    <span class="version">v1.3.5</span>
+  </header>
+  <p class="summary">Calculates the true cost to produce and deliver a product or service.</p>
+  <p class="context"><span class="label">When to use:</span> direct costs, overhead allocation, and per-unit margins — then identifies where cost reductions will actually move the needle.</p>
+  <footer>
+    <code class="folder">skills/cost-analysis/</code>
+  </footer>
+</article>
+<article class="card" data-name="customer lifetime value calculator" data-desc="calculates customer lifetime value with segmentation, prediction models, and retention investment recommendations for acquisition budgeting and growth forecasting.">
+  <header>
+    <h3>Customer Lifetime Value Calculator</h3>
+    <span class="version">v1.1.4</span>
+  </header>
+  <p class="summary">Calculates customer lifetime value with segmentation, prediction models, and retention investment recommendations for acquisition budgeting and growth forecasting.</p>
+  
+  <footer>
+    <code class="folder">skills/customer-lifetime-value/</code>
+  </footer>
+</article>
+<article class="card" data-name="financial kpi dashboard" data-desc="builds a financial kpi tracking dashboard structure with revenue, expenses, margins, runway, and trend analysis — limited to 8-12 metrics that directly answer whether the business is making money and will continue to.">
+  <header>
+    <h3>Financial KPI Dashboard</h3>
+    <span class="version">v1.7.5</span>
+  </header>
+  <p class="summary">Builds a financial KPI tracking dashboard structure with revenue, expenses, margins, runway, and trend analysis.</p>
+  <p class="context"><span class="label">When to use:</span> limited to 8-12 metrics that directly answer whether the business is making money and will continue to.</p>
+  <footer>
+    <code class="folder">skills/financial-dashboard/</code>
+  </footer>
+</article>
+<article class="card" data-name="financial model builder" data-desc="builds bottoms-up financial models with documented revenue drivers, cost assumptions, headcount plans, cash flow projections, and sensitivity analysis — for internal planning or investor-ready fundraising.">
+  <header>
+    <h3>Financial Model Builder</h3>
+    <span class="version">v1.6.5</span>
+  </header>
+  <p class="summary">Builds bottoms-up financial models with documented revenue drivers, cost assumptions, headcount plans, cash flow projections, and sensitivity analysis.</p>
+  <p class="context"><span class="label">When to use:</span> for internal planning or investor-ready fundraising.</p>
+  <footer>
+    <code class="folder">skills/financial-model/</code>
+  </footer>
+</article>
+<article class="card" data-name="kpi dashboard builder" data-desc="builds kpi tracking dashboards in markdown — metrics, targets, status indicators, and trend tracking for centralized business performance visibility.">
+  <header>
+    <h3>KPI Dashboard Builder</h3>
+    <span class="version">v1.4.9</span>
+  </header>
+  <p class="summary">Builds KPI tracking dashboards in markdown.</p>
+  <p class="context"><span class="label">When to use:</span> metrics, targets, status indicators, and trend tracking for centralized business performance visibility.</p>
+  <footer>
+    <code class="folder">skills/kpi-dashboard/</code>
+  </footer>
+</article>
+<article class="card" data-name="pricing analysis and optimization" data-desc="analyzes pricing effectiveness through competitor benchmarking, value metric alignment, and price sensitivity assessment — then models revenue impact of proposed changes before implementation.">
+  <header>
+    <h3>Pricing Analysis and Optimization</h3>
+    <span class="version">v1.1.0</span>
+  </header>
+  <p class="summary">Analyzes pricing effectiveness through competitor benchmarking, value metric alignment, and price sensitivity assessment.</p>
+  <p class="context"><span class="label">When to use:</span> then models revenue impact of proposed changes before implementation.</p>
+  <footer>
+    <code class="folder">skills/pricing-analysis/</code>
+  </footer>
+</article>
+<article class="card" data-name="pricing strategy" data-desc="develops pricing strategies with market positioning, value-based analysis, tier structure design, and price sensitivity testing — for setting or revising prices on products or services.">
+  <header>
+    <h3>Pricing Strategy</h3>
+    <span class="version">v1.4.5</span>
+  </header>
+  <p class="summary">Develops pricing strategies with market positioning, value-based analysis, tier structure design, and price sensitivity testing.</p>
+  <p class="context"><span class="label">When to use:</span> for setting or revising prices on products or services.</p>
+  <footer>
+    <code class="folder">skills/pricing-strategy/</code>
+  </footer>
+</article>
+<article class="card" data-name="profit and loss report" data-desc="generates monthly or quarterly profit and loss statements from transaction data with revenue breakdowns, expense categories, and margin analysis — for internal performance review or stakeholder reporting.">
+  <header>
+    <h3>Profit and Loss Report</h3>
+    <span class="version">v1.8.5</span>
+  </header>
+  <p class="summary">Generates monthly or quarterly profit and loss statements from transaction data with revenue breakdowns, expense categories, and margin analysis.</p>
+  <p class="context"><span class="label">When to use:</span> for internal performance review or stakeholder reporting.</p>
+  <footer>
+    <code class="folder">skills/profit-loss-report/</code>
+  </footer>
+</article>
+<article class="card" data-name="revenue forecast" data-desc="projects revenue with conservative, base, and optimistic scenarios using historical data, growth drivers, and planned changes — by stream, channel, or segment — for budgeting, planning, or board reporting.">
+  <header>
+    <h3>Revenue Forecast</h3>
+    <span class="version">v1.4.5</span>
+  </header>
+  <p class="summary">Projects revenue with conservative, base, and optimistic scenarios using historical data, growth drivers, and planned changes.</p>
+  <p class="context"><span class="label">When to use:</span> by stream, channel, or segment — for budgeting, planning, or board reporting.</p>
+  <footer>
+    <code class="folder">skills/revenue-forecast/</code>
+  </footer>
+</article>
+<article class="card" data-name="revenue model and growth projections" data-desc="designs revenue models with pricing tiers, unit economics, ltv calculations, and growth projections for validating business revenue strategy.">
+  <header>
+    <h3>Revenue Model and Growth Projections</h3>
+    <span class="version">v1.4.0</span>
+  </header>
+  <p class="summary">Designs revenue models with pricing tiers, unit economics, LTV calculations, and growth projections for validating business revenue strategy.</p>
+  
+  <footer>
+    <code class="folder">skills/revenue-model/</code>
+  </footer>
+</article>
+<article class="card" data-name="roi calculator" data-desc="builds roi analyses for business investment decisions — tools, hires, campaigns, infrastructure — with cost breakdown, benefit quantification, payback period, and a clear go/no-go recommendation.">
+  <header>
+    <h3>ROI Calculator</h3>
+    <span class="version">v1.4.0</span>
+  </header>
+  <p class="summary">Builds ROI analyses for business investment decisions.</p>
+  <p class="context"><span class="label">When to use:</span> tools, hires, campaigns, infrastructure — with cost breakdown, benefit quantification, payback period, and a clear go/no-go recommendation.</p>
+  <footer>
+    <code class="folder">skills/roi-calculator/</code>
+  </footer>
+</article>
+</div></section>
+<section id="sales-marketing" class="category">
+<h2 class="cat-title">Sales &amp; Marketing <span class="cat-count">8 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="churn analysis and retention planning" data-desc="analyzes customer or subscriber churn with cohort breakdowns, exit reason mapping, segment risk scoring, and a structured retention action plan — for organizations managing recurring revenue or subscription-based relationships.">
+  <header>
+    <h3>Churn Analysis and Retention Planning</h3>
+    <span class="version">v1.2.9</span>
+  </header>
+  <p class="summary">Analyzes customer or subscriber churn with cohort breakdowns, exit reason mapping, segment risk scoring, and a structured retention action plan.</p>
+  <p class="context"><span class="label">When to use:</span> for organizations managing recurring revenue or subscription-based relationships.</p>
+  <footer>
+    <code class="folder">skills/churn-analysis/</code>
+  </footer>
+</article>
+<article class="card" data-name="competitor analysis" data-desc="conducts structured competitor analysis with comparison matrices, positioning maps, gap identification, threat assessment, and strategic recommendations — for executives mapping competitive landscapes, preparing go-to-market strategies, or making positioning decisions.">
+  <header>
+    <h3>Competitor Analysis</h3>
+    <span class="version">v3.4.8</span>
+  </header>
+  <p class="summary">Conducts structured competitor analysis with comparison matrices, positioning maps, gap identification, threat assessment, and strategic recommendations.</p>
+  <p class="context"><span class="label">When to use:</span> for executives mapping competitive landscapes, preparing go-to-market strategies, or making positioning decisions.</p>
+  <footer>
+    <code class="folder">skills/competitor-analysis/</code>
+  </footer>
+</article>
+<article class="card" data-name="linkedin personal brand strategy" data-desc="builds a linkedin personal brand strategy with posting schedule, content themes, engagement tactics, and connection outreach for generating inbound opportunities.">
+  <header>
+    <h3>LinkedIn Personal Brand Strategy</h3>
+    <span class="version">v2.1.2</span>
+  </header>
+  <p class="summary">Builds a LinkedIn personal brand strategy with posting schedule, content themes, engagement tactics, and connection outreach for generating inbound opportunities.</p>
+  
+  <footer>
+    <code class="folder">skills/linkedin-strategy/</code>
+  </footer>
+</article>
+<article class="card" data-name="linkedin profile optimizer" data-desc="optimizes linkedin profiles with headline formulas, about section copy, experience descriptions, and keyword strategy for executives and senior professionals.">
+  <header>
+    <h3>LinkedIn Profile Optimizer</h3>
+    <span class="version">v2.2.9</span>
+  </header>
+  <p class="summary">Optimizes LinkedIn profiles with headline formulas, about section copy, experience descriptions, and keyword strategy for executives and senior professionals.</p>
+  
+  <footer>
+    <code class="folder">skills/linkedin-profile-optimizer/</code>
+  </footer>
+</article>
+<article class="card" data-name="market research and opportunity analysis" data-desc="conducts market sizing, trend analysis, audience segmentation, and opportunity assessment for business ideas, new markets, and strategic decisions.">
+  <header>
+    <h3>Market Research and Opportunity Analysis</h3>
+    <span class="version">v1.2.3</span>
+  </header>
+  <p class="summary">Conducts market sizing, trend analysis, audience segmentation, and opportunity assessment for business ideas, new markets, and strategic decisions.</p>
+  
+  <footer>
+    <code class="folder">skills/market-research/</code>
+  </footer>
+</article>
+<article class="card" data-name="market sizing (tam/sam/som)" data-desc="estimates tam, sam, and som with top-down and bottom-up methodologies, documented assumptions, and presentation-ready outputs for business plans and investment materials.">
+  <header>
+    <h3>Market Sizing (TAM/SAM/SOM)</h3>
+    <span class="version">v1.1.9</span>
+  </header>
+  <p class="summary">Estimates TAM, SAM, and SOM with top-down and bottom-up methodologies, documented assumptions, and presentation-ready outputs for business plans and investment materials.</p>
+  
+  <footer>
+    <code class="folder">skills/market-sizing/</code>
+  </footer>
+</article>
+<article class="card" data-name="pitch deck builder" data-desc="builds complete investor, client, or partnership pitch decks — slide-by-slide content with problem, solution, market, traction, team, and ask — for fundraising, client proposals, and keynote presentations. delivers markdown inline by default; can produce a file if requested and if a suitable tool is available.">
+  <header>
+    <h3>Pitch Deck Builder</h3>
+    <span class="version">v2.4.1</span>
+  </header>
+  <p class="summary">Builds complete investor, client, or partnership pitch decks.</p>
+  <p class="context"><span class="label">When to use:</span> slide-by-slide content with problem, solution, market, traction, team, and ask — for fundraising, client proposals, and keynote presentations. Delivers markdown inline by default; can produce a file if requested and if a suitable tool is available.</p>
+  <footer>
+    <code class="folder">skills/pitch-deck/</code>
+  </footer>
+</article>
+<article class="card" data-name="strategic partnership proposal" data-desc="creates strategic partnership pitch documents with mutual value propositions, deal structures, and terms for joint ventures, co-marketing deals, revenue sharing, and strategic alliances.">
+  <header>
+    <h3>Strategic Partnership Proposal</h3>
+    <span class="version">v3.2.5</span>
+  </header>
+  <p class="summary">Creates strategic partnership pitch documents with mutual value propositions, deal structures, and terms for joint ventures, co-marketing deals, revenue sharing, and strategic alliances.</p>
+  
+  <footer>
+    <code class="folder">skills/partnership-proposal/</code>
+  </footer>
+</article>
+</div></section>
+<section id="product-roadmap" class="category">
+<h2 class="cat-title">Product &amp; Roadmap <span class="cat-count">3 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="ai use case finder and roi roadmap" data-desc="identifies ai automation opportunities in business workflows with feasibility assessment, roi estimates, and implementation roadmaps prioritized by impact and effort.">
+  <header>
+    <h3>AI Use Case Finder and ROI Roadmap</h3>
+    <span class="version">v1.6.0</span>
+  </header>
+  <p class="summary">Identifies AI automation opportunities in business workflows with feasibility assessment, ROI estimates, and implementation roadmaps prioritized by impact and effort.</p>
+  
+  <footer>
+    <code class="folder">skills/ai-use-case-finder/</code>
+  </footer>
+</article>
+<article class="card" data-name="product roadmap builder" data-desc="creates product roadmaps in markdown with ice-scored features, milestones, release timelines, and status tracking — output ready to paste into any project management tool.">
+  <header>
+    <h3>Product Roadmap Builder</h3>
+    <span class="version">v3.4.8</span>
+  </header>
+  <p class="summary">Creates product roadmaps in markdown with ICE-scored features, milestones, release timelines, and status tracking.</p>
+  <p class="context"><span class="label">When to use:</span> output ready to paste into any project management tool.</p>
+  <footer>
+    <code class="folder">skills/product-roadmap/</code>
+  </footer>
+</article>
+<article class="card" data-name="service productization framework" data-desc="converts custom services into fixed-scope, fixed-price offerings with standardized deliverables, pricing tiers, delivery processes, and sales page copy for scalable, repeatable revenue.">
+  <header>
+    <h3>Service Productization Framework</h3>
+    <span class="version">v1.6.0</span>
+  </header>
+  <p class="summary">Converts custom services into fixed-scope, fixed-price offerings with standardized deliverables, pricing tiers, delivery processes, and sales page copy for scalable, repeatable revenue.</p>
+  
+  <footer>
+    <code class="folder">skills/service-productization/</code>
+  </footer>
+</article>
+</div></section>
+<section id="people-hr" class="category">
+<h2 class="cat-title">People &amp; HR <span class="cat-count">8 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="company culture document" data-desc="writes company culture documents with values, behavioral definitions, rituals, and operating norms for team alignment and hiring.">
+  <header>
+    <h3>Company Culture Document</h3>
+    <span class="version">v1.8.5</span>
+  </header>
+  <p class="summary">Writes company culture documents with values, behavioral definitions, rituals, and operating norms for team alignment and hiring.</p>
+  
+  <footer>
+    <code class="folder">skills/culture-document/</code>
+  </footer>
+</article>
+<article class="card" data-name="compensation plan designer" data-desc="designs compensation structures with salary bands, bonus frameworks, equity considerations, and market benchmarking for competitive hiring and retention across organizational levels.">
+  <header>
+    <h3>Compensation Plan Designer</h3>
+    <span class="version">v1.6.0</span>
+  </header>
+  <p class="summary">Designs compensation structures with salary bands, bonus frameworks, equity considerations, and market benchmarking for competitive hiring and retention across organizational levels.</p>
+  
+  <footer>
+    <code class="folder">skills/compensation-plan/</code>
+  </footer>
+</article>
+<article class="card" data-name="delegation framework" data-desc="builds task delegation systems with responsibility matrices, handoff templates, accountability tracking, and escalation protocols — for executives and managers transferring ownership to functional leads and team members.">
+  <header>
+    <h3>Delegation Framework</h3>
+    <span class="version">v1.8.5</span>
+  </header>
+  <p class="summary">Builds task delegation systems with responsibility matrices, handoff templates, accountability tracking, and escalation protocols.</p>
+  <p class="context"><span class="label">When to use:</span> for executives and managers transferring ownership to functional leads and team members.</p>
+  <footer>
+    <code class="folder">skills/delegation-framework/</code>
+  </footer>
+</article>
+<article class="card" data-name="employee engagement survey" data-desc="creates employee engagement surveys with anonymous feedback mechanisms, question categories, rating scales, and action planning frameworks — for quarterly pulse checks or annual culture assessments.">
+  <header>
+    <h3>Employee Engagement Survey</h3>
+    <span class="version">v1.2.2</span>
+  </header>
+  <p class="summary">Creates employee engagement surveys with anonymous feedback mechanisms, question categories, rating scales, and action planning frameworks.</p>
+  <p class="context"><span class="label">When to use:</span> for quarterly pulse checks or annual culture assessments.</p>
+  <footer>
+    <code class="folder">skills/employee-survey/</code>
+  </footer>
+</article>
+<article class="card" data-name="exit interview template" data-desc="creates structured exit interview question sets and written survey versions with interviewer guides, data tracking, and a retention action framework — for capturing honest feedback from departing employees.">
+  <header>
+    <h3>Exit Interview Template</h3>
+    <span class="version">v1.1.9</span>
+  </header>
+  <p class="summary">Creates structured exit interview question sets and written survey versions with interviewer guides, data tracking, and a retention action framework.</p>
+  <p class="context"><span class="label">When to use:</span> for capturing honest feedback from departing employees.</p>
+  <footer>
+    <code class="folder">skills/exit-interview-template/</code>
+  </footer>
+</article>
+<article class="card" data-name="hiring scorecard" data-desc="creates structured interview scorecards with competency ratings, weighted evaluation criteria, question-to-competency mapping, and a multi-interviewer calibration framework for objective hiring decisions.">
+  <header>
+    <h3>Hiring Scorecard</h3>
+    <span class="version">v1.6.5</span>
+  </header>
+  <p class="summary">Creates structured interview scorecards with competency ratings, weighted evaluation criteria, question-to-competency mapping, and a multi-interviewer calibration framework for objective hiring decisions.</p>
+  
+  <footer>
+    <code class="folder">skills/hiring-scorecard/</code>
+  </footer>
+</article>
+<article class="card" data-name="one-on-one meeting template" data-desc="designs recurring 1:1 meeting templates with check-in questions, priorities alignment, career development discussion, and action item tracking — for consistent, trust-building manager-report conversations.">
+  <header>
+    <h3>One-on-One Meeting Template</h3>
+    <span class="version">v1.5.0</span>
+  </header>
+  <p class="summary">Designs recurring 1:1 meeting templates with check-in questions, priorities alignment, career development discussion, and action item tracking.</p>
+  <p class="context"><span class="label">When to use:</span> for consistent, trust-building manager-report conversations.</p>
+  <footer>
+    <code class="folder">skills/one-on-one-template/</code>
+  </footer>
+</article>
+<article class="card" data-name="performance review system" data-desc="builds performance review templates with self-assessment, manager feedback, competency ratings, goal tracking, and development planning — for quarterly, biannual, or annual employee review cycles.">
+  <header>
+    <h3>Performance Review System</h3>
+    <span class="version">v2.2.7</span>
+  </header>
+  <p class="summary">Builds performance review templates with self-assessment, manager feedback, competency ratings, goal tracking, and development planning.</p>
+  <p class="context"><span class="label">When to use:</span> for quarterly, biannual, or annual employee review cycles.</p>
+  <footer>
+    <code class="folder">skills/performance-review/</code>
+  </footer>
+</article>
+</div></section>
+<section id="operations-projects" class="category">
+<h2 class="cat-title">Operations &amp; Projects <span class="cat-count">9 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="annual business review" data-desc="compiles year-end business reviews with year-over-year metrics, milestone timeline, wins and lessons analysis, and strategic goals for the upcoming year — for internal reflection, stakeholders, or the full leadership team.">
+  <header>
+    <h3>Annual Business Review</h3>
+    <span class="version">v1.6.0</span>
+  </header>
+  <p class="summary">Compiles year-end business reviews with year-over-year metrics, milestone timeline, wins and lessons analysis, and strategic goals for the upcoming year.</p>
+  <p class="context"><span class="label">When to use:</span> for internal reflection, stakeholders, or the full leadership team.</p>
+  <footer>
+    <code class="folder">skills/annual-review/</code>
+  </footer>
+</article>
+<article class="card" data-name="annual report writer" data-desc="produces structured annual reports with executive summary, financial performance, operational highlights, strategic outlook, and stakeholder narrative — for organizations reporting to boards, investors, or regulatory bodies.">
+  <header>
+    <h3>Annual Report Writer</h3>
+    <span class="version">v1.6.5</span>
+  </header>
+  <p class="summary">Produces structured annual reports with executive summary, financial performance, operational highlights, strategic outlook, and stakeholder narrative.</p>
+  <p class="context"><span class="label">When to use:</span> for organizations reporting to boards, investors, or regulatory bodies.</p>
+  <footer>
+    <code class="folder">skills/annual-report-writer/</code>
+  </footer>
+</article>
+<article class="card" data-name="business continuity plan" data-desc="develops business continuity plans with risk assessment, critical function mapping, recovery procedures, and crisis communication protocols — for organizations preparing for operational disruptions.">
+  <header>
+    <h3>Business Continuity Plan</h3>
+    <span class="version">v1.6.0</span>
+  </header>
+  <p class="summary">Develops business continuity plans with risk assessment, critical function mapping, recovery procedures, and crisis communication protocols.</p>
+  <p class="context"><span class="label">When to use:</span> for organizations preparing for operational disruptions.</p>
+  <footer>
+    <code class="folder">skills/business-continuity-plan/</code>
+  </footer>
+</article>
+<article class="card" data-name="change management plan" data-desc="creates change management plans with stakeholder analysis, communication strategy, phased rollout timelines, and success metrics — for organizations rolling out process, tool, or structural transitions.">
+  <header>
+    <h3>Change Management Plan</h3>
+    <span class="version">v1.6.5</span>
+  </header>
+  <p class="summary">Creates change management plans with stakeholder analysis, communication strategy, phased rollout timelines, and success metrics.</p>
+  <p class="context"><span class="label">When to use:</span> for organizations rolling out process, tool, or structural transitions.</p>
+  <footer>
+    <code class="folder">skills/change-management-plan/</code>
+  </footer>
+</article>
+<article class="card" data-name="project tracker" data-desc="creates a project management task list in markdown with tasks, statuses, owners, due dates, and priorities — pre-populated from a project brief or scope document, for teams replacing spreadsheet-based task management.">
+  <header>
+    <h3>Project Tracker</h3>
+    <span class="version">v3.4.3</span>
+  </header>
+  <p class="summary">Creates a project management task list in markdown with tasks, statuses, owners, due dates, and priorities.</p>
+  <p class="context"><span class="label">When to use:</span> pre-populated from a project brief or scope document, for teams replacing spreadsheet-based task management.</p>
+  <footer>
+    <code class="folder">skills/project-tracker/</code>
+  </footer>
+</article>
+<article class="card" data-name="quality assurance checklist" data-desc="creates qa checklists for products, services, or content with pass/fail criteria, review workflows, defect tracking, and continuous improvement cycles — for standardizing quality control across teams and delivery processes.">
+  <header>
+    <h3>Quality Assurance Checklist</h3>
+    <span class="version">v1.5.0</span>
+  </header>
+  <p class="summary">Creates QA checklists for products, services, or content with pass/fail criteria, review workflows, defect tracking, and continuous improvement cycles.</p>
+  <p class="context"><span class="label">When to use:</span> for standardizing quality control across teams and delivery processes.</p>
+  <footer>
+    <code class="folder">skills/quality-assurance-checklist/</code>
+  </footer>
+</article>
+<article class="card" data-name="quarterly business review" data-desc="creates quarterly business review documents with metric analysis, goal tracking against okrs, wins and challenge debrief, and a prioritized plan for the next quarter.">
+  <header>
+    <h3>Quarterly Business Review</h3>
+    <span class="version">v1.4.0</span>
+  </header>
+  <p class="summary">Creates quarterly business review documents with metric analysis, goal tracking against OKRs, wins and challenge debrief, and a prioritized plan for the next quarter.</p>
+  
+  <footer>
+    <code class="folder">skills/quarterly-review/</code>
+  </footer>
+</article>
+<article class="card" data-name="risk assessment" data-desc="conducts business risk assessments with likelihood and impact scoring, mitigation strategies, early warning indicators, and monitoring plans — for leadership teams managing operational, financial, market, and compliance exposure.">
+  <header>
+    <h3>Risk Assessment</h3>
+    <span class="version">v1.7.5</span>
+  </header>
+  <p class="summary">Conducts business risk assessments with likelihood and impact scoring, mitigation strategies, early warning indicators, and monitoring plans.</p>
+  <p class="context"><span class="label">When to use:</span> for leadership teams managing operational, financial, market, and compliance exposure.</p>
+  <footer>
+    <code class="folder">skills/risk-assessment/</code>
+  </footer>
+</article>
+<article class="card" data-name="vendor evaluation" data-desc="creates structured vendor and supplier comparison matrices with weighted scoring, total cost of ownership analysis, and recommendation summaries — for procurement decisions involving multiple candidates across software, services, or physical suppliers.">
+  <header>
+    <h3>Vendor Evaluation</h3>
+    <span class="version">v3.9.8</span>
+  </header>
+  <p class="summary">Creates structured vendor and supplier comparison matrices with weighted scoring, total cost of ownership analysis, and recommendation summaries.</p>
+  <p class="context"><span class="label">When to use:</span> for procurement decisions involving multiple candidates across software, services, or physical suppliers.</p>
+  <footer>
+    <code class="folder">skills/vendor-evaluation/</code>
+  </footer>
+</article>
+</div></section>
+<section id="legal-compliance" class="category">
+<h2 class="cat-title">Legal &amp; Compliance <span class="cat-count">9 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="ai content policy and disclosure standards" data-desc="creates ai content policies with disclosure requirements, quality standards, and review workflows for organizations producing ai-assisted content.">
+  <header>
+    <h3>AI Content Policy and Disclosure Standards</h3>
+    <span class="version">v2.1.0</span>
+  </header>
+  <p class="summary">Creates AI content policies with disclosure requirements, quality standards, and review workflows for organizations producing AI-assisted content.</p>
+  
+  <footer>
+    <code class="folder">skills/ai-content-policy/</code>
+  </footer>
+</article>
+<article class="card" data-name="ai ethics and usage policy" data-desc="creates ai usage policies with transparency commitments, approved and prohibited uses, human oversight requirements, and disclosure standards for responsible ai deployment across teams and organizations.">
+  <header>
+    <h3>AI Ethics and Usage Policy</h3>
+    <span class="version">v1.7.5</span>
+  </header>
+  <p class="summary">Creates AI usage policies with transparency commitments, approved and prohibited uses, human oversight requirements, and disclosure standards for responsible AI deployment across teams and organizations.</p>
+  
+  <footer>
+    <code class="folder">skills/ai-ethics-policy/</code>
+  </footer>
+</article>
+<article class="card" data-name="intellectual property audit" data-desc="conducts a structured audit of an organization&#x27;s intellectual property assets — trademarks, patents, copyrights, trade secrets, and software — to identify ownership gaps, protection status, and exposure.">
+  <header>
+    <h3>Intellectual Property Audit</h3>
+    <span class="version">v1.5.5</span>
+  </header>
+  <p class="summary">Conducts a structured audit of an organization&#x27;s intellectual property assets.</p>
+  <p class="context"><span class="label">When to use:</span> trademarks, patents, copyrights, trade secrets, and software — to identify ownership gaps, protection status, and exposure.</p>
+  <footer>
+    <code class="folder">skills/intellectual-property-audit/</code>
+  </footer>
+</article>
+<article class="card" data-name="joint venture proposal" data-desc="writes joint venture proposals with value exchange analysis, revenue sharing structure, responsibility matrices, and exit terms — for organizations proposing partnerships where two parties co-invest resources to create shared value.">
+  <header>
+    <h3>Joint Venture Proposal</h3>
+    <span class="version">v1.6.0</span>
+  </header>
+  <p class="summary">Writes joint venture proposals with value exchange analysis, revenue sharing structure, responsibility matrices, and exit terms.</p>
+  <p class="context"><span class="label">When to use:</span> for organizations proposing partnerships where two parties co-invest resources to create shared value.</p>
+  <footer>
+    <code class="folder">skills/joint-venture-proposal/</code>
+  </footer>
+</article>
+<article class="card" data-name="letter of intent" data-desc="drafts non-binding letters of intent for corporate acquisitions, partnerships, joint ventures, and commercial agreements — covering deal structure, key terms, exclusivity, and due diligence conditions.">
+  <header>
+    <h3>Letter of Intent</h3>
+    <span class="version">v1.8.0</span>
+  </header>
+  <p class="summary">Drafts non-binding letters of intent for corporate acquisitions, partnerships, joint ventures, and commercial agreements.</p>
+  <p class="context"><span class="label">When to use:</span> covering deal structure, key terms, exclusivity, and due diligence conditions.</p>
+  <footer>
+    <code class="folder">skills/letter-of-intent/</code>
+  </footer>
+</article>
+<article class="card" data-name="nda template" data-desc="drafts mutual and one-way non-disclosure agreements for business discussions, vendor engagements, contractor relationships, and m&amp;a processes — with plain-english summaries and jurisdiction-adaptable terms.">
+  <header>
+    <h3>NDA Template</h3>
+    <span class="version">v3.6.7</span>
+  </header>
+  <p class="summary">Drafts mutual and one-way non-disclosure agreements for business discussions, vendor engagements, contractor relationships, and M&amp;A processes.</p>
+  <p class="context"><span class="label">When to use:</span> with plain-English summaries and jurisdiction-adaptable terms.</p>
+  <footer>
+    <code class="folder">skills/nda-template/</code>
+  </footer>
+</article>
+<article class="card" data-name="non-compete agreement" data-desc="drafts enforceable non-compete and non-solicitation clauses for employment agreements and separation packages — covering scope of restriction, duration, geography, and consideration, with jurisdiction-specific enforceability notes.">
+  <header>
+    <h3>Non-Compete Agreement</h3>
+    <span class="version">v1.8.0</span>
+  </header>
+  <p class="summary">Drafts enforceable non-compete and non-solicitation clauses for employment agreements and separation packages.</p>
+  <p class="context"><span class="label">When to use:</span> covering scope of restriction, duration, geography, and consideration, with jurisdiction-specific enforceability notes.</p>
+  <footer>
+    <code class="folder">skills/non-compete-agreement/</code>
+  </footer>
+</article>
+<article class="card" data-name="partnership agreement" data-desc="drafts corporate partnership agreements covering capital contributions, ownership splits, roles, profit distribution, decision authority, buyout provisions, and dissolution terms — for joint ventures and co-owned business structures.">
+  <header>
+    <h3>Partnership Agreement</h3>
+    <span class="version">v2.2.9</span>
+  </header>
+  <p class="summary">Drafts corporate partnership agreements covering capital contributions, ownership splits, roles, profit distribution, decision authority, buyout provisions, and dissolution terms.</p>
+  <p class="context"><span class="label">When to use:</span> for joint ventures and co-owned business structures.</p>
+  <footer>
+    <code class="folder">skills/partnership-agreement/</code>
+  </footer>
+</article>
+<article class="card" data-name="regulatory compliance checklist" data-desc="builds tailored regulatory compliance checklists covering applicable laws, licensing requirements, data protection, employment obligations, and audit-readiness — for organizations operating across multiple jurisdictions or regulated industries.">
+  <header>
+    <h3>Regulatory Compliance Checklist</h3>
+    <span class="version">v1.7.5</span>
+  </header>
+  <p class="summary">Builds tailored regulatory compliance checklists covering applicable laws, licensing requirements, data protection, employment obligations, and audit-readiness.</p>
+  <p class="context"><span class="label">When to use:</span> for organizations operating across multiple jurisdictions or regulated industries.</p>
+  <footer>
+    <code class="folder">skills/compliance-checklist/</code>
+  </footer>
+</article>
+</div></section>
+<section id="communication-content" class="category">
+<h2 class="cat-title">Communication &amp; Content <span class="cat-count">6 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="crisis communications response plan" data-desc="creates crisis communication plans with response templates, escalation protocols, and stakeholder messaging for business emergencies and pr incidents.">
+  <header>
+    <h3>Crisis Communications Response Plan</h3>
+    <span class="version">v1.4.8</span>
+  </header>
+  <p class="summary">Creates crisis communication plans with response templates, escalation protocols, and stakeholder messaging for business emergencies and PR incidents.</p>
+  
+  <footer>
+    <code class="folder">skills/crisis-comms/</code>
+  </footer>
+</article>
+<article class="card" data-name="executive resume writer" data-desc="writes executive resumes with achievement-focused content, leadership narrative, and ats-friendly formatting for senior professionals pursuing leadership roles.">
+  <header>
+    <h3>Executive Resume Writer</h3>
+    <span class="version">v2.1.8</span>
+  </header>
+  <p class="summary">Writes executive resumes with achievement-focused content, leadership narrative, and ATS-friendly formatting for senior professionals pursuing leadership roles.</p>
+  
+  <footer>
+    <code class="folder">skills/executive-resume/</code>
+  </footer>
+</article>
+<article class="card" data-name="expert positioning and thought leadership strategy" data-desc="builds expert positioning strategies with thought leadership plans, speaking opportunities, content pillars, and visibility systems that attract premium opportunities and inbound interest.">
+  <header>
+    <h3>Expert Positioning and Thought Leadership Strategy</h3>
+    <span class="version">v1.3.1</span>
+  </header>
+  <p class="summary">Builds expert positioning strategies with thought leadership plans, speaking opportunities, content pillars, and visibility systems that attract premium opportunities and inbound interest.</p>
+  
+  <footer>
+    <code class="folder">skills/expert-positioning/</code>
+  </footer>
+</article>
+<article class="card" data-name="investor update email" data-desc="writes monthly or quarterly investor update emails with metrics table, highlights, challenges, and specific asks — in a format investors can read in under 5 minutes.">
+  <header>
+    <h3>Investor Update Email</h3>
+    <span class="version">v1.4.9</span>
+  </header>
+  <p class="summary">Writes monthly or quarterly investor update emails with metrics table, highlights, challenges, and specific asks.</p>
+  <p class="context"><span class="label">When to use:</span> in a format investors can read in under 5 minutes.</p>
+  <footer>
+    <code class="folder">skills/investor-update/</code>
+  </footer>
+</article>
+<article class="card" data-name="signature keynote talk builder" data-desc="develops signature keynote talks with modular sections, audience customization guides, and delivery notes for conferences, summits, and executive speaking engagements.">
+  <header>
+    <h3>Signature Keynote Talk Builder</h3>
+    <span class="version">v1.4.0</span>
+  </header>
+  <p class="summary">Develops signature keynote talks with modular sections, audience customization guides, and delivery notes for conferences, summits, and executive speaking engagements.</p>
+  
+  <footer>
+    <code class="folder">skills/signature-talk/</code>
+  </footer>
+</article>
+<article class="card" data-name="ted-style talk outline" data-desc="structures ted-style talk outlines with narrative arc, audience engagement points, and timing markers for idea-driven presentations.">
+  <header>
+    <h3>TED-Style Talk Outline</h3>
+    <span class="version">v2.1.0</span>
+  </header>
+  <p class="summary">Structures TED-style talk outlines with narrative arc, audience engagement points, and timing markers for idea-driven presentations.</p>
+  
+  <footer>
+    <code class="folder">skills/ted-talk-outline/</code>
+  </footer>
+</article>
+</div></section>
+<section id="decision-frameworks" class="category">
+<h2 class="cat-title">Decision Frameworks <span class="cat-count">4 skills</span></h2>
+<div class="grid">
+<article class="card" data-name="client diagnostic assessment tool" data-desc="builds diagnostic assessment tools for consulting engagements with scoring, benchmarking, and recommendation logic that show clients where they stand and what to do next.">
+  <header>
+    <h3>Client Diagnostic Assessment Tool</h3>
+    <span class="version">v1.5.5</span>
+  </header>
+  <p class="summary">Builds diagnostic assessment tools for consulting engagements with scoring, benchmarking, and recommendation logic that show clients where they stand and what to do next.</p>
+  
+  <footer>
+    <code class="folder">skills/diagnostic-assessment/</code>
+  </footer>
+</article>
+<article class="card" data-name="consulting engagement framework" data-desc="builds consulting engagement frameworks with diagnostic questions, analysis templates, and recommendation structures that turn expertise into a repeatable, scalable methodology.">
+  <header>
+    <h3>Consulting Engagement Framework</h3>
+    <span class="version">v1.5.5</span>
+  </header>
+  <p class="summary">Builds consulting engagement frameworks with diagnostic questions, analysis templates, and recommendation structures that turn expertise into a repeatable, scalable methodology.</p>
+  
+  <footer>
+    <code class="folder">skills/consulting-framework/</code>
+  </footer>
+</article>
+<article class="card" data-name="decision matrix" data-desc="creates weighted decision matrices for business choices with criteria, scoring, recommendation logic, and sensitivity analysis — for removing bias from multi-criteria decisions and documenting rationale for stakeholders.">
+  <header>
+    <h3>Decision Matrix</h3>
+    <span class="version">v1.3.5</span>
+  </header>
+  <p class="summary">Creates weighted decision matrices for business choices with criteria, scoring, recommendation logic, and sensitivity analysis.</p>
+  <p class="context"><span class="label">When to use:</span> for removing bias from multi-criteria decisions and documenting rationale for stakeholders.</p>
+  <footer>
+    <code class="folder">skills/decision-matrix/</code>
+  </footer>
+</article>
+<article class="card" data-name="industry benchmarking report" data-desc="creates industry benchmarking reports comparing business metrics against standards and best-in-class performers to identify performance gaps and set realistic targets.">
+  <header>
+    <h3>Industry Benchmarking Report</h3>
+    <span class="version">v1.1.3</span>
+  </header>
+  <p class="summary">Creates industry benchmarking reports comparing business metrics against standards and best-in-class performers to identify performance gaps and set realistic targets.</p>
+  
+  <footer>
+    <code class="folder">skills/benchmarking-report/</code>
+  </footer>
+</article>
+</div></section>
+</main>
+
+<footer class="site">
+  <p>Two skills to start: <strong>setup</strong> collects your preferences and writes <code>user-config.md</code>; <strong>update-profile</strong> changes any preference later. Every other skill reads that config to personalize output.</p>
+  <p>Every skill lives in <code>skills/&lt;name&gt;/SKILL.md</code>. Frontmatter defines what the skill does; the body defines how Claude produces the deliverable.</p>
+</footer>
+
+<script>
+const search = document.getElementById('search');
+const cards = Array.from(document.querySelectorAll('.card'));
+const cats = Array.from(document.querySelectorAll('.category'));
+
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  cards.forEach(card => {
+    if (!q) { card.classList.remove('hidden'); return; }
+    const name = card.dataset.name || '';
+    const desc = card.dataset.desc || '';
+    if (name.includes(q) || desc.includes(q)) card.classList.remove('hidden');
+    else card.classList.add('hidden');
+  });
+  cats.forEach(cat => {
+    const visibleCards = cat.querySelectorAll('.card:not(.hidden)');
+    if (visibleCards.length === 0) cat.classList.add('hidden');
+    else cat.classList.remove('hidden');
+  });
+});
+</script>
+</body>
+</html>

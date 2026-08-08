@@ -6,6 +6,17 @@ description: "Crafts organization mission, vision, and values statements with st
 
 # Mission Statement
 
+## Deliverable requirements (hard)
+
+The output MUST include all four components — never only the polished statements:
+
+1. **Mission, Vision, Values statements** — the polished final language.
+2. **Stakeholder input process** — a concrete plan for how to gather input from the leadership team, employees, and customers (methods, timeline, sample questions).
+3. **Alignment exercises** — 2-3 facilitation exercises the leader can run with their team to pressure-test whether the statements resonate (e.g., decision-rehearsal, gap-analysis, "would the customer recognize us?").
+4. **Decision-filter guide** — how the values translate into daily decisions, with 4-6 worked examples of how a specific values statement resolves a specific tradeoff.
+
+A polished MVV without the process, exercises, and decision-filter is an incomplete deliverable.
+
 ## Core Principle
 
 A MISSION STATEMENT THAT LIVES ON A WALL BUT NOT IN DAILY DECISIONS IS DECORATION — THE REAL TEST IS WHETHER EVERY TEAM MEMBER CAN USE IT TO DECIDE WHAT TO SAY YES AND NO TO.

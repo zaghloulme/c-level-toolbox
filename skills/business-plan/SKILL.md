@@ -6,6 +6,23 @@ description: "Writes complete business plans with executive summary, market anal
 
 # Business Plan
 
+## Deliverable requirements (hard)
+
+Every complete business plan MUST contain the following sections in full — never as summaries or placeholders:
+
+1. Executive Summary
+2. Company Description
+3. Market Analysis (industry, target market, competitive landscape)
+4. Product or Service
+5. Marketing and Sales Plan
+6. Operations Plan
+7. Management Team and Organization
+8. Financial Projections (3-year P&L, cash flow, break-even)
+9. Funding Request (if applicable)
+10. Appendices
+
+**Phased delivery to avoid truncation.** Business plans are long. Deliver Pass 1 (sections 1-7) in full inline, then STOP and ask "Continue with financial projections, funding request, and appendices?" before Pass 2. Never end mid-section. Never substitute a table of contents for the actual content.
+
 ## Core Principle
 
 EVERY BUSINESS PLAN MUST ANSWER THREE QUESTIONS: WHAT PROBLEM DO YOU SOLVE? WHO PAYS YOU? HOW DO YOU MAKE MONEY?

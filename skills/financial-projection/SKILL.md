@@ -6,6 +6,18 @@ description: "Builds 12-month financial projections with three revenue scenarios
 
 # Financial Projection
 
+## Deliverable requirements (hard)
+
+Every 12-month projection MUST contain the following as complete tables — never as summary metrics only:
+
+1. **Month-by-month P&L table** — all 12 months as columns; rows for revenue, COGS, gross profit, operating expenses (categorized), EBITDA, net income.
+2. **Three revenue scenarios** — conservative, base, optimistic — each with its own P&L or at minimum a revenue-line row per scenario.
+3. **Expense forecasting by category** — S&M, R&D, G&A, Facilities, Other — with month-over-month figures, not annual totals only.
+4. **Break-even analysis** — the specific month revenue covers total costs under the base scenario.
+5. **Assumptions log** — every headline figure traceable to an input.
+
+Never substitute a narrative summary for the tables. Produce every table in full inline.
+
 ## Core Principle
 
 PROJECTIONS ARE NOT PREDICTIONS — THEY ARE STRUCTURED ASSUMPTIONS THAT HELP YOU MAKE DECISIONS TODAY BASED ON WHERE THE NUMBERS COULD GO.

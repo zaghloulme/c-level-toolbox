@@ -6,6 +6,20 @@ description: "Builds bottoms-up financial models with documented revenue drivers
 
 # Financial Model
 
+## Deliverable requirements (hard)
+
+Every financial model MUST contain the following components as complete tables — never as summary narrative:
+
+1. **Revenue drivers table** — unit economics, pricing tiers, sales cycle, conversion rates. Show the formulas.
+2. **Cost assumptions table** — COGS, gross margin, unit cost breakdown.
+3. **Headcount plan** — hires by quarter, by function, with fully-loaded cost per hire.
+4. **Operating expenses** — categorized (S&M, R&D, G&A) with monthly or quarterly figures.
+5. **Cash flow projection** — 36 months minimum, opening cash, inflows, outflows, closing cash, runway.
+6. **Sensitivity table** — key drivers flexed ±20%, showing runway and break-even impact.
+7. **Documented assumptions** — every headline number traceable to a stated input.
+
+Never replace any of these with a summary or "here's what the model would contain." Produce every table in full inline.
+
 ## Core Principle
 
 A FINANCIAL MODEL IS ONLY AS GOOD AS ITS ASSUMPTIONS — EVERY NUMBER MUST TRACE BACK TO A STATED ASSUMPTION THAT CAN BE CHALLENGED, TESTED, AND UPDATED.
