@@ -4,6 +4,16 @@ version: 1.1.1
 description: "Crafts brand positioning statements with target audience, category, point of difference, reason to believe, and competitive context to define how a brand stands apart in its market."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Brand Positioning Statement
 
 ## Core Principle
@@ -97,7 +107,7 @@ Revisit positioning annually or when: entering a new market, launching a major n
 
 ## Anti-Patterns
 
-- **Positioning as everything** — "The best, fastest, cheapest, most innovative" is positioning as nothing. Choose one dimension to own.
+- **Positioning as everything** — "The best, fastest, cheapest, most advanced" is positioning as nothing. Choose one dimension to own.
 - **Generic benefit claims** — "High quality" and "great customer service" are not differentiators. Everyone claims them.
 - **Ignoring the competition** — positioning exists relative to alternatives. Without knowing your competitors, you cannot differentiate.
 - **Customer-facing verbatim** — the positioning statement is an internal strategy tool. It should inform copy, not BE the copy.

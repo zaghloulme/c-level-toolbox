@@ -4,6 +4,16 @@ version: 1.4.0
 description: "Creates Objectives and Key Results frameworks with aspirational objective setting, measurable key result definition, scoring rubrics, and quarterly check-in cadence — for aligning teams around shared strategic goals."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # OKR Builder
 
 ## Core Principle

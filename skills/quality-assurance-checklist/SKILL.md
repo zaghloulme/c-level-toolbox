@@ -4,6 +4,16 @@ version: 1.5.0
 description: "Creates QA checklists for products, services, or content with pass/fail criteria, review workflows, defect tracking, and continuous improvement cycles — for standardizing quality control across teams and delivery processes."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Quality Assurance Checklist
 
 ## Core Principle
@@ -28,7 +38,7 @@ Define what is being quality-checked and the standards it must meet.
 
 ## Phase 2: Build Checklist
 
-Create a comprehensive QA checklist with pass/fail criteria.
+Create a full QA checklist with pass/fail criteria.
 
 ### Checklist Structure
 

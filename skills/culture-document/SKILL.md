@@ -4,6 +4,16 @@ version: 1.8.5
 description: "Writes company culture documents with values, behavioral definitions, rituals, and operating norms for team alignment and hiring."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Culture Document
 
 ## Core Principle
@@ -188,6 +198,6 @@ Make the culture document a living part of the organization.
 ## Recovery
 
 - **Cannot identify values:** Use the audit questions. "What gets someone fired?" and "What gets someone praised?" reveal real values, even if unstated.
-- **Team disagrees on values:** That is the conversation the culture doc exists to have. Facilitate a discussion, find common ground, and document the agreements.
+- **Team disagrees on values:** That is the conversation the culture doc exists to have. Run the discussion, find common ground, and document the agreements.
 - **Current culture is unhealthy:** Acknowledge it honestly. Document what is, then define what you want and create a plan to bridge the gap.
 - **Document feels corporate or stuffy:** Rewrite in the organization's natural voice. The document should sound like the business actually talks, not like an HR department.

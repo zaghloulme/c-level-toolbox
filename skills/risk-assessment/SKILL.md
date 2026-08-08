@@ -4,6 +4,16 @@ version: 1.7.5
 description: "Conducts business risk assessments with likelihood and impact scoring, mitigation strategies, early warning indicators, and monitoring plans — for leadership teams managing operational, financial, market, and compliance exposure."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Risk Assessment
 
 ## Core Principle
@@ -26,7 +36,7 @@ Surface all relevant risks before scoring them.
 
 ### Risk Categories
 
-Walk through each category to ensure comprehensive coverage:
+Walk through each category to make sure nothing gets missed:
 
 - **Financial:** Cash flow, revenue concentration, currency exposure, debt covenants
 - **Operational:** Key person dependency, system failures, process breakdowns, supply chain

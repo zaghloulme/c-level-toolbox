@@ -4,6 +4,16 @@ version: 1.7.5
 description: "Builds a financial KPI tracking dashboard structure with revenue, expenses, margins, runway, and trend analysis — limited to 8-12 metrics that directly answer whether the business is making money and will continue to."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Financial Dashboard
 
 ## Core Principle

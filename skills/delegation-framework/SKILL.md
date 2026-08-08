@@ -4,6 +4,16 @@ version: 1.8.5
 description: "Builds task delegation systems with responsibility matrices, handoff templates, accountability tracking, and escalation protocols — for executives and managers transferring ownership to functional leads and team members."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Delegation Framework
 
 ## Core Principle
@@ -190,7 +200,7 @@ Reinvested into: Cross-functional alignment and strategic planning
 
 ## Constraints
 
-- **NEVER delegate Zone of Genius tasks** — those represent the highest-leverage activities
+- **NEVER delegate Zone of Genius tasks** — those are the highest-value activities only you can do
 - **ALWAYS include a handoff template** — verbal instructions are not delegation
 - **ALWAYS include an autonomy ladder** — micromanagement defeats the purpose
 - Every handoff must include "DONE LOOKS LIKE" criteria — without it, quality expectations are invisible

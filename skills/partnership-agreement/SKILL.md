@@ -4,6 +4,16 @@ version: 2.2.9
 description: "Drafts corporate partnership agreements covering capital contributions, ownership splits, roles, profit distribution, decision authority, buyout provisions, and dissolution terms — for joint ventures and co-owned business structures."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 ## Legal Disclaimer
 
 This skill generates partnership agreement templates for reference and drafting purposes. It does not constitute legal advice. Partnership agreements carry significant legal and financial obligations. Have any agreement reviewed by a qualified attorney in the governing jurisdiction before signing or enforcing.

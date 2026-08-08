@@ -1,23 +1,31 @@
 ---
 name: Update Profile
-version: 1.0.5
-description: Update any preference in user-config.md — tone, currency, tools, priorities, or anything else stored during setup.
+version: 2.0.0
+description: Update anything in user-config.md — name, tone, use case, or what to avoid.
 ---
 
 # Update Profile
 
-Read `user-config.md` from the current working directory.
+Read `user-config.md` from the current directory.
 
-Show the user a summary of their current settings in a clean, readable format.
+If it does not exist, tell the user setup has not been completed and to run `/setup` first. Stop there.
 
-Then ask: "What would you like to change?"
+If it exists, show them the current profile in plain prose. Don't use bullet lists. Something like:
 
-Allow them to update any field — name, role, organization, country, currency, language, communication style, tools, priorities, or notes. They can update one thing or several.
+> You're set as [name], age [age or "not shared"]. You use me for [use case]. You want me to [tone]. You told me to avoid [avoid notes].
 
-After they confirm the changes, rewrite `user-config.md` with the updated values. Keep all fields that were not changed exactly as they were.
+Then ask:
 
-Update the `*Last updated*` date at the bottom to today's date.
+> What do you want to change?
 
-Confirm the file is saved and tell them the changes are active immediately.
+Wait for their reply. Update only the fields they mention. Keep everything else exactly as it was.
 
-If `user-config.md` does not exist, tell the user setup has not been completed yet and ask them to run `/setup` first.
+Rewrite `user-config.md` with the updated values. Update the `Last updated` date at the bottom to today's date in YYYY-MM-DD.
+
+Tell them the change is saved. One sentence. Done.
+
+## Rules
+
+- Never present options as a list.
+- Never batch multiple changes at once — ask, confirm, save.
+- Do not invent fields. If the user wants to add something the current schema doesn't cover, tell them the current profile is name / age / use case / tone / avoid notes and ask which of those fits best. If none fits, save it under "avoid notes" as an extra line.

@@ -4,6 +4,16 @@ version: 1.6.0
 description: "Writes joint venture proposals with value exchange analysis, revenue sharing structure, responsibility matrices, and exit terms — for organizations proposing partnerships where two parties co-invest resources to create shared value."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Joint Venture Proposal
 
 ## Core Principle

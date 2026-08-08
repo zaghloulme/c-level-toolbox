@@ -4,6 +4,16 @@ version: 3.4.8
 description: "Creates product roadmaps in markdown with ICE-scored features, milestones, release timelines, and status tracking — output ready to paste into any project management tool."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Product Roadmap
 
 ## Quick Reference
@@ -57,7 +67,7 @@ DEFAULT PRIORITIZATION METHOD. Use ICE unless the user explicitly requests MoSCo
 
 | Dimension | Question | Scale |
 |-----------|----------|-------|
-| Impact | How much does this move the needle on revenue, retention, or satisfaction? | 1 (minimal) to 10 (transformative) |
+| Impact | How much does this move the needle on revenue, retention, or satisfaction? | 1 (minimal) to 10 (game-changing for the business) |
 | Confidence | How certain are we this will deliver the expected impact? | 1 (pure guess) to 10 (validated with data) |
 | Ease | How easy is this to implement given current resources? | 1 (massive effort) to 10 (trivial to ship) |
 

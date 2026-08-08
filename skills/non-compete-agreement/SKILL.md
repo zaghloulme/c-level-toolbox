@@ -4,6 +4,16 @@ version: 1.8.0
 description: "Drafts enforceable non-compete and non-solicitation clauses for employment agreements and separation packages — covering scope of restriction, duration, geography, and consideration, with jurisdiction-specific enforceability notes."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 ## Legal Disclaimer
 
 This skill generates non-compete and non-solicitation templates for reference and drafting purposes. It does not constitute legal advice. Non-compete enforceability varies significantly by jurisdiction — some prohibit them entirely. Have any agreement reviewed by a qualified attorney in the governing jurisdiction before signing or enforcing.

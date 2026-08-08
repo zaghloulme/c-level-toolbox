@@ -4,6 +4,16 @@ version: 1.7.0
 description: "Crafts organization mission, vision, and values statements with stakeholder input process and alignment exercises that connect purpose to daily decisions."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Mission Statement
 
 ## Deliverable requirements (hard)
@@ -183,7 +193,7 @@ Values: Precision, Candor, Client Outcomes First
 ## Anti-Patterns
 
 - **Committee-written statements** — too many cooks produce generic mush. One person drafts, the group refines.
-- **Buzzword soup** — "We synergize innovative solutions to empower stakeholders" means nothing. Use plain language.
+- **Buzzword soup** — "We create next-generation solutions to help stakeholders unlock growth" means nothing. Use plain language.
 - **Too long** — if it takes more than 10 seconds to say, no one will remember it. Keep it tight.
 - **Too vague** — "We make the world a better place" could apply to any organization. Be specific about who and how.
 - **Aspirational mission** — the mission is what you do NOW. The vision is the future. Do not confuse them.

@@ -4,6 +4,16 @@ version: 1.8.0
 description: "Drafts non-binding letters of intent for corporate acquisitions, partnerships, joint ventures, and commercial agreements — covering deal structure, key terms, exclusivity, and due diligence conditions."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Letter of Intent
 
 ## Core Principle
@@ -44,7 +54,7 @@ Dear [Name],
 This Letter of Intent ("LOI") sets forth the principal terms under
 which [Acquiring/Investing Party] ("Buyer/Investor/Partner") proposes to
 [acquire/invest in/partner with] [Target Company] ("Seller/Company/
-Target"). This LOI is intended to facilitate further discussion and
+Target"). This LOI is intended as the basis for further discussion and
 negotiation of a definitive agreement.
 
 ### 1. Transaction Structure

@@ -4,6 +4,16 @@ version: 2.4.1
 description: "Builds complete investor, client, or partnership pitch decks — slide-by-slide content with problem, solution, market, traction, team, and ask — for fundraising, client proposals, and keynote presentations. Delivers markdown inline by default; can produce a file if requested and if a suitable tool is available."
 ---
 
+## Toolbox rules
+
+Before starting: silently read `user-config.md` in the current directory. Match the user's tone preference and the "what to avoid" notes. If it does not exist, tell the user to run `/setup` first, then stop.
+
+When multiple paths could work, pick the best one and state it in one line. Do not present a numbered list of choices for the user to pick from.
+
+Follow the writing rules in `CLAUDE.md` at the plugin root: banned words, active voice, concrete over abstract, no formatting slop.
+
+---
+
 # Pitch Deck
 
 ## Core Principle
