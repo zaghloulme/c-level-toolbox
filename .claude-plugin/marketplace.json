@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/marketplace.json",
+  "name": "c-level-toolbox-marketplace",
+  "description": "71 Claude skills for the recurring work of running a company \u2014 strategy, finance, sales, operations, people, and communications.",
+  "owner": {
+    "name": "Ahmed Zaghloul",
+    "url": "https://github.com/zaghloulme"
+  },
+  "plugins": [
+    {
+      "name": "c-level-toolbox",
+      "source": "./",
+      "description": "71 Claude skills for C-level leaders: strategy, finance, sales, product, HR, ops, legal, comms, and decision frameworks. Zero external tool dependencies.",
+      "version": "3.2.0",
+      "author": {
+        "name": "Ahmed Zaghloul",
+        "url": "https://github.com/zaghloulme"
+      },
+      "homepage": "https://github.com/zaghloulme/c-level-toolbox",
+      "repository": "https://github.com/zaghloulme/c-level-toolbox",
+      "license": "MIT",
+      "keywords": [
+        "skills",
+        "c-level",
+        "executive",
+        "strategy",
+        "finance",
+        "operations"
+      ],
+      "category": "productivity"
+    }
+  ]
+}

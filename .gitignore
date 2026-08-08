@@ -1,2 +1,14 @@
-.DS_Store
+# User-specific config (created by /setup)
 user-config.md
+
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Python (from test harness)
+__pycache__/
+*.pyc

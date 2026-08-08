@@ -1,90 +1,90 @@
-# C Level Toolbox
+# C-Level Toolbox
 
-Executive decision support inside Claude — 69 skills for strategy, finance, operations, legal, HR, and growth. Built for C-level leaders and senior teams in mid-to-large organizations.
+71 Claude skills for the recurring work of running a company — strategy, finance, sales, product, HR, operations, legal, communications, and decision frameworks.
 
-Everything runs entirely within Claude. There is nothing to connect, no account to link, and no third-party tool required. You describe what you need in plain language; the toolbox produces a finished, ready-to-use document.
+Every skill produces a complete deliverable, not a blank template. Zero external tools, zero accounts to connect, zero API keys.
 
----
-
-## What it does
-
-Ask for a business deliverable and get it back complete — not a blank template. For example:
-
-- "Build me a pitch deck for our Series A" → a full slide-by-slide deck in markdown, ready to paste into PowerPoint, Google Slides, or Keynote.
-- "Forecast our cash flow for the next 12 months" → a three-scenario forecast with runway and hiring guidance.
-- "Draft a mutual NDA for a vendor discussion" → a complete agreement with a legal-review disclaimer.
-- "Score these three vendors for us" → a weighted comparison matrix with a recommendation.
-
-The toolbox adapts to how you work: your preferred tone, your currency, your role, and your language. You set this once and it applies everywhere.
+**Browse all 71 skills →** open [`skills.html`](./skills.html) in your browser.
 
 ---
 
-## Getting started
+## Install
 
-### 1. Install
-
-In Claude Code, add the plugin from this folder:
+### Claude Code (CLI) — recommended
 
 ```
-/plugin install c-level-toolbox
+/plugin marketplace add zaghloulme/c-level-toolbox
+/plugin install c-level-toolbox@c-level-toolbox-marketplace
 ```
 
-Or point Claude Code at the folder directly:
+That's it. Both commands run inside a Claude Code session. The first line registers this repo as a marketplace; the second installs the toolbox as a plugin.
 
-```
-claude --plugin-dir /path/to/c-level-toolbox
-```
-
-### 2. Run setup (one time)
-
-Type:
+Then start any session with:
 
 ```
 /setup
 ```
 
-Claude asks a few short questions — your name, role, how you like to be spoken to, your currency, and your top priorities — then remembers them for every future request. This takes about a minute. You can change any answer later with `/update-profile`.
+Claude asks a few short questions (name, role, currency, tone, priorities) and writes a `user-config.md` that every skill personalizes to. Change anything later with `/update-profile`.
 
-### 3. Use any skill
+### Claude.ai (web) and Claude Desktop
 
-Type a slash command, or just describe what you need. To see the full menu, ask Claude "what can the C Level Toolbox do?" or browse the categories below.
+Anthropic supports one-skill-at-a-time upload:
+
+1. Grab the ZIP for the skill you want from the [Releases page](https://github.com/zaghloulme/c-level-toolbox/releases)
+2. In Claude, open **Settings → Capabilities → Skills → Upload**
+3. Select the ZIP; toggle the skill on
+
+Repeat per skill. There is no whole-toolbox upload on web/Desktop today.
 
 ---
 
 ## What's inside
 
-**Finance and Pricing** — break-even, budgets, cash flow, compensation, cost analysis, financial dashboards and models, projections, investor updates, pricing, P&L, quarterly reviews, revenue forecasts, ROI.
+| Category | Count | Examples |
+|---|:---:|---|
+| Setup | 2 | `setup`, `update-profile` |
+| Strategy & Planning | 7 | `annual-planning`, `business-plan`, `swot-analysis`, `okr-builder` |
+| Finance & Metrics | 15 | `financial-model`, `roi-calculator`, `pricing-strategy`, `kpi-dashboard` |
+| Sales & Marketing | 8 | `pitch-deck`, `competitor-analysis`, `market-sizing`, `churn-analysis` |
+| Product & Roadmap | 3 | `product-roadmap`, `ai-use-case-finder`, `service-productization` |
+| People & HR | 8 | `performance-review`, `compensation-plan`, `hiring-scorecard`, `employee-survey` |
+| Operations & Projects | 9 | `project-tracker`, `risk-assessment`, `vendor-evaluation`, `annual-review` |
+| Legal & Compliance | 9 | `nda-template`, `compliance-checklist`, `ip-audit`, `partnership-agreement` |
+| Communication & Content | 6 | `signature-talk`, `ted-talk-outline`, `investor-update`, `crisis-comms` |
+| Decision Frameworks | 4 | `decision-matrix`, `consulting-framework`, `benchmarking-report` |
 
-**HR and Team** — annual reviews, culture documents, employee surveys, exit interviews, hiring scorecards, OKRs, 1:1 templates, performance reviews.
-
-**Operations and Systems** — annual planning, business continuity, change management, decision matrices, delegation frameworks, project trackers, QA checklists, risk assessments, vendor evaluations.
-
-**Legal and Compliance** — compliance checklists, IP audits, letters of intent, NDAs, non-compete and partnership agreements.
-
-**Sales and Strategy** — business plans, competitor analysis, joint ventures, market research and sizing, partnership proposals, pitch decks, product roadmaps, revenue models, SWOT.
-
-**Growth, Branding, Analytics, and Consulting** — annual reports, churn analysis, KPI dashboards, customer lifetime value, benchmarking, brand positioning, executive resumes, expert positioning, mission statements, signature talks, TED-style outlines, consulting frameworks, diagnostics, crisis communications, LinkedIn strategy, and more.
-
-**AI and Technology** — AI content and ethics policies, AI use-case discovery.
-
----
-
-## Personalization
-
-Your preferences live in a file called `user-config.md` in your working directory. It is created by `/setup` and read silently before every response. It is never shared and is excluded from version control by default.
-
-To update it at any time:
-
-```
-/update-profile
-```
+**Full catalogue:** [`skills.html`](./skills.html) — searchable, categorized, one card per skill.
 
 ---
 
-## A note on legal and financial output
+## How it works
 
-The legal skills (NDAs, agreements, letters of intent) generate drafts for reference and negotiation. They are not legal advice — have any agreement reviewed by a qualified attorney in the relevant jurisdiction before signing. The finance skills produce models and estimates based on the inputs you provide; review the assumptions before acting on them.
+Once installed, describe what you need in plain English. Claude picks the matching skill by its description and produces the full deliverable.
+
+Examples:
+
+- "Build me a Series A pitch deck." → 12-slide deck in markdown, problem through ask
+- "Forecast cash flow for the next 12 months, three scenarios." → conservative/base/optimistic, month-by-month, break-even
+- "Draft a mutual NDA for a vendor conversation." → complete agreement with legal-review disclaimer
+- "Score these three vendors." → weighted comparison matrix + recommendation
+
+Every skill reads your `user-config.md` first, so tone, currency, and priorities match how you actually work.
 
 ---
 
-*Version 3.2.0 — by AxuraOps*
+## Quality
+
+Every skill in this toolbox has been headless-tested against its own stated purpose and graded by an LLM judge on a 1–5 rubric. Current baseline: **60+ skills at score 5**, all remaining skills at 3 or above. Full scorecard in [`docs/scorecard.md`](./docs/scorecard.md); improvement patterns in [`docs/improvement-plan.md`](./docs/improvement-plan.md).
+
+---
+
+## Legal and finance disclaimer
+
+Legal skills (NDAs, agreements, letters of intent) produce drafts for reference and negotiation, not legal advice. Have any agreement reviewed by a qualified attorney in the relevant jurisdiction before signing.
+
+Finance skills produce models and estimates from the inputs you provide. Review the assumptions before acting on them.
+
+---
+
+MIT License. Version 3.2.0.
